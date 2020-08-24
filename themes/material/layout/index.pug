@@ -1,0 +1,12 @@
+.page-index
+  != css('styles/index')
+  .index-title
+    .index-title-main #{config.title}
+    .index-title-sub #{config.subtitle}
+  .index-articleList
+    each item in page.posts.data
+      .com-onlyDesktop
+        != partial('templates/article', { article: item })
+      .com-onlyMobile
+        != partial('templates/articleObvious', { article: item })
+  != partial('templates/pagination', { pageTotal: page.total, currentPage: page.current })

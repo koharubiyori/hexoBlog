@@ -1,0 +1,28 @@
+//-
+  article: typeof page.posts.data[number]
+
+a.tl-articleItem.mdc-elevation--z2(href=`/${article.path}`)
+  img.articleItem-bgImage(src=article.image)
+  .articleItem-title #{article.title}
+  .articleItem-info
+    .articleItem-info--excerpt #{article.excerpt}
+    hr
+    div.articleItem-info--row.flex-row.flex-cross-center
+      .iconTextItem
+        i.material-icons watch_later
+        span #{article.date.format('YYYY年MM月DD日')}
+      .iconTextItem
+        i.material-icons menu_book
+        span #{`${wordcount(article.content)}个字`}
+      .iconTextItem
+        i.material-icons access_alarm
+        span #{`约使用${min2read(article.content)}分钟阅读`}
+    div.articleItem-info--row.flex-row.flex-cross-center(style="margin-top:5px")
+      //- if article.categories.length
+      //-   .articleItem-info--category.iconTextItem
+      //-     i.material-icons folder
+      //-     span.flex-row.flex-cross-center !{article.categories.data.map(item => item.name).join('<i class="material-icons">chevron_right</i>')}
+      each tag in article.tags.data
+        .articleItem-info--tag.iconTextItem
+          i.material-icons local_offer
+          span #{tag.name}

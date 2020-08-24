@@ -1,0 +1,117 @@
+@import '../utils.scss';
+
+.page-sidebar {
+  @media screen and (max-width: 1350px) {
+    display: none;
+  }
+  
+  .sidebar-placeholder {
+    width: 272px;
+  }
+
+  .sidebar-body {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 272px;
+    z-index: 3;
+    padding-top: 56px;
+    background-color: rgba($color: white, $alpha: 0.9);
+
+    .articleContents {
+      padding-left: 10px;
+      
+      &-title {
+        font-size: 18px;
+        margin: 1em 0;
+      }
+
+      &-item {
+        display: block;
+        text-decoration: none;
+        margin: 5px 0;
+        font-size: 17px;
+        transition: all 0.2s;
+
+        &[data-level="3"] {
+          margin-left: 10px;
+          font-size: 16px;
+        }
+
+        &.is-active {
+          color: var(--mdc-theme-primary);
+          font-weight: bold;
+          border-bottom: 3px var(--mdc-theme-primary) solid;
+          padding-bottom: 3px;
+        }
+      }
+    }
+
+    .katakoto {
+      margin: 0 10px;
+      overflow: hidden;
+      
+      &-title {
+        font-size: 18px;
+        margin: 1em 0;
+      }
+
+      &-items {
+        width: max-content;
+        overflow: hidden;
+        transition: all 0.3s;
+
+        .katakoto-item {
+          float: left;
+          width: 260px;
+          box-sizing: border-box;
+          padding-right: 10px;
+
+          &--content {
+            font-size: 14px;
+            margin-left: 10px;
+          }
+
+          &--date {
+            text-align: right;
+            font-size: 13px;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+
+    .tags {
+      margin-left: 10px;
+      
+      &-title {
+        font-size: 18px;
+        margin: 1em 0;
+      }
+
+      &-item {
+        text-decoration: none;
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        padding: 5px 7px;
+        border-radius: 5px;
+        font-size: 13px;
+        background-color: var(--mdc-theme-primary);
+        transition: all 0.2s;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        > i {
+          font-size: 16px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

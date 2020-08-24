@@ -1,0 +1,23 @@
+.page-drawer
+  .drawer-placeholder
+  aside.mdc-drawer.drawer-body.mdc-elevation--z4
+    .drawer-header.flex-column.flex-evenly
+      //- img.drawer-header--bgImg(src=theme.drawerBgImg)
+      .drawer-header--content.flex-column.flex-cross-center
+        img.drawer-avatar(src=theme.avatarImg)
+        .drawer-userName #{config.author}
+        .drawer-totals.flex-row.flex-cross-center
+          div.flex.flex-column.flex-center
+            div.drawer-totals--label 文章
+            div.drawer-totals--value 共#{site.posts.length}篇
+          div.flex.flex-column.flex-center
+            div.drawer-totals--label 标签
+            div.drawer-totals--value 共#{site.tags.length}个
+    .drawer-content
+      .drawer-list
+        each item in theme.drawerList
+          a.drawer-list-item.flex-row.flex-cross-center.materialRipple.materialRipple--dark.com-pointer(href=item.link)
+            i.list-item--icon.material-icons #{item.icon}
+            span.list-item--title #{item.title}
+
+        

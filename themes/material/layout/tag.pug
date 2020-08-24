@@ -1,0 +1,9 @@
+- const articles = site.tags.data.find(tag => tag.name === page.tag).posts.data
+
+.page-tag
+  != css('styles/tag')
+  .page-tag-title
+    div “#{page.tag}”标签下共有#{articles.length}篇文章
+  .page-tag-articleList
+    each article in articles
+      != partial('templates/articleObvious.pug', { article })

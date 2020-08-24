@@ -1,0 +1,85 @@
+-
+  // 随机显示文章
+  const random = (min, max) => Math.round(Math.random() * (max - min) + min)
+  const articleIcons = ['chino', 'cocoa', 'koharu', 'maya', 'noel', 'nonoka', 'rize', 'shione', 'syaro']
+
+  // 随机抽取文章
+  let randomArticles = []
+  if (site.posts.length <= 5) { 
+    randomArticles = site.posts
+  } else {
+    while (randomArticles.length < 5) {
+      const ran = random(0, site.posts.length - 1)
+      !randomArticles.includes(ran) && randomArticles.push(ran)
+    }
+
+    randomArticles = randomArticles.map(item => site.posts.data[item])
+  }
+
+  // 随机抽取图片
+  let randomIcons = []
+  while (randomIcons.length < randomArticles.length) {
+    const ran = random(0, articleIcons.length - 1)
+    !randomIcons.includes(ran) && randomIcons.push(ran)
+  } 
+  randomIcons = randomIcons.map(item => articleIcons[item])
+
+  // 将图片和文章合并为一个对象
+  randomArticles = randomArticles.map((item, index) => ({ 
+    imageUrl: `/images/articleIcons/${randomIcons[index]}.png`, 
+    article: item 
+  }))
+
+.page-sidebar
+  .sidebar-placeholder
+  .sidebar-body.mdc-elevation--z4
+    //- 不是文章页面显示tab栏(暂时只有一个“随机文章”tab)
+    if !is_post()
+      <div class="mdc-tab-bar" role="tablist">
+        <div class="mdc-tab-scroller">
+          <div class="mdc-tab-scroller__scroll-area">
+            <div class="mdc-tab-scroller__scroll-content">
+              <button class="mdc-tab mdc-tab--active">
+                <span class="mdc-tab__content">
+                  //- <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span>
+                  <span class="mdc-tab__text-label">随机文章</span>
+                </span>
+                <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                  <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                </span>
+                <span class="mdc-tab__ripple"></span>
+              </button>
+              
+              //- <button class="mdc-tab mdc-tab--active">
+              //-   <span class="mdc-tab__content">
+              //-     <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span>
+              //-     <span class="mdc-tab__text-label">Favorites</span>
+              //-   </span>
+              //-   <span class="mdc-tab-indicator">
+              //-     <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+              //-   </span>
+              //-   <span class="mdc-tab__ripple"></span>
+              //- </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      .tabBar-content
+        each item in randomArticles
+          != partial('templates/articleForSidebar', item)
+    else
+      .articleContents: div.articleContents-title 目录
+      //- 目录主体由js渲染
+    .katakoto
+      .katakoto-title 只言片语
+      .katakoto-items
+        each katakoto in site.data.katakoto.reverse()
+          .katakoto-item
+            .katakoto-item--content #{katakoto.content}
+            .katakoto-item--date #{`—— ${moment(katakoto.date).format('YYYY年MM月DD日 HH:mm')}`}
+    .tags
+      .tags-title 内容标签
+      each tag in site.tags.data
+        a.tags-item(href=`/${tag.path}` title=`查看“${tag.name}”标签下的文章`)
+          i.material-icons local_offer
+          span #{tag.name}

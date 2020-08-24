@@ -1,0 +1,84 @@
+figure {
+  margin: 10px 0;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #1E1E1E;
+  color: #D4D4D4; 
+  font-family: 'Consolas', serif;
+  
+  // js
+  .hljs-keyword,
+  .hljs-literal {
+    color: #569CD6;
+  }
+  
+  .hljs-title {
+    color: #DCDCAA;
+  }
+
+  .hljs-built_in {
+    color: #DCDCAA;
+  }
+
+  .hljs-string {
+    color: #CE9178;
+  }
+
+  .hljs-number {
+    color: #B5CEA8;
+  }
+
+  .hljs-symbol {
+    color: #569CD6;
+  }
+
+  .hljs-comment {
+    color: #6A9955;
+  }
+
+  .hljs-function {
+    color: #D4D4D4; 
+
+    .hljs-params {
+      color: #9CDCFE;
+    }
+  }
+
+  .hljs-regexp {
+    color: #D16969;
+  }
+
+  // html
+  .hljs-tag {
+    color: #858585;
+
+    .hljs-name {
+      color: #569CD6;
+    }
+
+    .hljs-attr {
+      color: #9CDCFE;
+    }
+  }
+
+  // css
+  .hljs-selector-class,
+  .hljs-selector-pseudo {
+    color: #D7BA7D;
+  }
+
+  .hljs-attribute {
+    color: #9CDCFE;
+  }
+
+  &.css,
+  &.scss {
+    .hljs-keyword {
+      color: #C586C0;
+    }
+  }
+}

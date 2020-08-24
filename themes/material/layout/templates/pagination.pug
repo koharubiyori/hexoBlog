@@ -1,0 +1,34 @@
+//-
+  pageTotal: number
+  currentPage: number
+
+-
+  let pageRange = [currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2]   // 显示范围
+  pageRange = pageRange.some(item => item < 1) ? [1, 2, 3, 4, 5] : pageRange  // 如果有小于1的值，则重置范围为1~5
+  pageRange = pageRange.filter(item => item <= pageTotal)     // 消除大于页数总数的数
+  let endOverflowTotal = 5 - pageRange.length    // 计算超出页数总数的数量
+  let minPage = pageRange[0]    // 拿到范围内最小值
+  for(let i=1; i <= endOverflowTotal; i++){   // 向前补位
+    pageRange.unshift(minPage - i)
+  }
+  pageRange = pageRange.filter(item => item >= 1)   // 消除小于1的数
+
+  const gotoPage = page => page !== 1 ? ('/page/' + page) : '/'
+
+.tl-pagination
+  if currentPage !== 1
+    a.paginationItem(href=gotoPage(currentPage - 1)): i.material-icons(style="font-size:20px; position:relative; left:4px;") arrow_back_ios
+  if pageRange[0] !== 1
+    a.paginationItem(href=gotoPage(1) data-active=currentPage === 1) 1
+  if pageRange[0] > 2
+    a.paginationItem(href=gotoPage(currentPage - 1)) ...
+  each page in pageRange
+    a.paginationItem(href=gotoPage(page) data-active=currentPage === page) #{page}
+  if pageRange[pageRange.length - 1] < pageTotal - 1
+    a.paginationItem(href=gotoPage(currentPage + 1)) ...
+  if pageRange[pageRange.length - 1] !== pageTotal
+    a.paginationItem(href=gotoPage(pageTotal) data-active=currentPage === pageTotal) #{pageTotal}
+  if currentPage !== pageTotal
+    a.paginationItem(href=gotoPage(currentPage + 1)): i.material-icons(style="font-size:20px;") arrow_forward_ios
+
+

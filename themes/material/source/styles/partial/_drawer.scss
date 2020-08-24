@@ -1,0 +1,136 @@
+@import '../utils.scss';
+
+.page-drawer {
+  .drawer-placeholder {
+    width: 255px;
+    margin-left: -265px;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  .drawer-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    transition: all 0.3s;
+    pointer-events: none;
+    @include onMobile {
+      margin-left: -265px;
+    }
+    
+    &.is-active {
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      pointer-events: initial;
+    }
+  }
+
+  .drawer-body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    padding-top: 56px;
+    background-color: white;
+    margin-left: -265px;
+    
+    @include onMobile {
+      padding-top: 0;
+      z-index: 100;
+      // box-shadow: 0 0 10px #666;
+    }
+  }
+
+  .mdc-drawer--modal {
+    box-shadow: none;
+  }
+
+  .drawer-header {
+    height: 200px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: var(--mdc-theme-primary);
+
+    .drawer-header--bgImg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .drawer-header--content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    .drawer-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px white solid;
+      background-color: #eee;
+      margin-top: 20px;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: rotate(360deg) scale(1.2);
+      }
+    }
+
+    .drawer-userName {
+      // color: white;
+      margin-top: 10px;
+      text-shadow: 0 0 3px black;
+      color: white;
+    }
+
+    .drawer-totals {
+      // color: white;
+      margin-top: 10px;
+      text-shadow: 0 0 3px black;
+      color: white;
+
+      &--label {
+        font-size: 17px;
+      }
+
+      &--value {
+        margin-top: 5px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .drawer-content {
+
+    .drawer-list {
+
+      .drawer-list-item {
+        height: 45px;
+        box-sizing: border-box;
+        padding: 0 20px;
+
+        .list-item--icon {
+          // color: white;
+          color: var(--mdc-theme-primary);
+        }
+
+        .list-item--title {
+          // color: white;
+          margin-left: 30px;
+        }
+      }  
+    }
+  }
+}

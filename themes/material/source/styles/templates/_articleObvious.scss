@@ -1,0 +1,81 @@
+@import '../utils.scss';
+
+.tl-articleObviousItem {
+  color: #666;
+  cursor: pointer;
+  margin: 30px auto;
+  overflow: hidden;
+  position: relative;
+  animation: fadeSink 0.7s;
+  max-width: 700px;
+  transition: all 0.3s;
+  background-color: white;
+  display: block;
+
+  &:hover {
+    box-shadow: 0 0 7px #666;
+    
+    .articleObviousItem-image {
+      transform: scale(1.05);
+    }
+  }
+  
+  .articleObviousItem {
+    &-image-wrapper {
+      height: 250px;
+      overflow: hidden;
+      @include onMobile {
+        height: 200px;
+      }
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s;
+    }
+
+    &-main {
+      padding: 10px;
+      box-sizing: border-box;
+
+      &--title {
+        font-size: 24px;
+        text-align: center;
+      }
+
+      hr {
+        width: 100%;
+        border: none;
+        height: 1px;
+        margin: 10px 0;
+        background-color: rgb(204, 204, 204);
+      }
+
+      &--info {
+        word-break: break-word;
+        font-size: 13px;
+      }
+
+      &--row {
+        margin-top: 10px;
+      }
+
+      // &--tags {
+      //   margin-left: 10px;
+      // }
+
+      .iconTextItem {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+  
+        > i {
+          margin-right: 5px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

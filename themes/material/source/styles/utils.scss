@@ -1,0 +1,11 @@
+@mixin onMobile() {
+  @media screen and (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin onDesktop() {
+  @media screen and (min-width: 720px) {
+    @content;
+  }
+}

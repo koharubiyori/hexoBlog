@@ -1,0 +1,30 @@
+-
+  let title = config.title
+  let suffix = ` - ${title}`
+  if (is_post()) title = page.title + suffix
+  if (is_tag()) title = `标签：${page.tag}${suffix}`
+  let description = config.description
+  if (is_post()) description = page.excerpt
+
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    title #{title}
+    meta(name="description" content=description)
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    != css('libs/normalize', 'libs/flex', 'libs/material-components-web', 'libs/mdc.tooltip')
+    != css('styles/commons/index', 'styles/templates/index', 'styles/partial/index', 'styles/layout')
+    != js('libs/jquery', 'libs/material-components-web', 'libs/mdc.tooltip')
+    != js('scripts/common', 'scripts/uiRender')
+  body
+    img.page-bgImg(src=theme.bgImg)
+    include partial/header.pug
+    .mainContainer.flex-row
+      include partial/drawer.pug
+      main.mainContent.flex !{body}
+      include partial/sidebar.pug
+      include partial/search.pug
+    .backTopButton.mdc-elevation--z4.flex-row.flex-center.is-hide.materialRipple
+      i.material-icons north

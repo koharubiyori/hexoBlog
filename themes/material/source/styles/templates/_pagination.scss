@@ -1,0 +1,36 @@
+.tl-pagination {
+  margin: 0 auto;
+  display: table;
+  animation: fadeSink 0.7s;
+
+  @keyframes fadeSink {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+  }
+
+  .paginationItem {
+    text-decoration: none;
+    width: 30px;
+    border: 1px transparent solid;
+    cursor: pointer;
+    height: 30px;
+    margin: 0 3px;
+    display: inline-flex;
+    font-size: 13px;
+    transition: all 0.2s;
+    align-items: center;
+    border-radius: 3px;
+    vertical-align: middle;
+    justify-content: center;
+    background-color: #eee;
+
+    &[data-active] {
+      color: white;
+      cursor: initial;
+      background-color: var(--mdc-theme-primary);
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+//-
+  article: typeof page.posts.data[number]
+
+a.tl-articleObviousItem.mdc-elevation--z2(href=`/${article.path}`)
+  .articleObviousItem-image-wrapper
+    img.articleObviousItem-image(src=article.image)
+  .articleObviousItem-main
+    .articleObviousItem-main--title #{article.title}
+    hr
+    .articleObviousItem-main--info
+      .articleObviousItem-main--row(style="font-size:15px") #{article.excerpt}
+      .articleObviousItem-main--row.flex-row.flex-cross-center(style="margin-top:15px")
+        .iconTextItem
+          i.material-icons watch_later
+          span #{article.date.format('YYYY年MM月DD日')}
+        .iconTextItem.com-onlyDesktop
+          i.material-icons menu_book
+          span #{`${wordcount(article.content)}个字`}
+        .iconTextItem.com-onlyDesktop
+          i.material-icons access_alarm
+          span #{`约使用${min2read(article.content)}分钟阅读`}
+      .articleObviousItem-main--row.flex-row.flex-cross-center
+        //- if article.categories.length
+        //-   .articleObviousItem-main--category.iconTextItem
+        //-     i.material-icons folder
+        //-     span.flex-row.flex-cross-center !{article.categories.data.map(item => item.name).join('<i class="material-icons">chevron_right</i>')}
+        if article.tags
+          .articleObviousItem-main--tags.flex-row-inline.flex-cross-center
+            each tag in article.tags.data
+              .articleObviousItem-main--tag.iconTextItem
+                i.material-icons local_offer
+                span #{tag.name}
+  

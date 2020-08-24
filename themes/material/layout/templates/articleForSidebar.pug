@@ -1,0 +1,11 @@
+//-
+  article: typeof page.posts.data[number]
+  imageUrl: string
+
+a.tl-articleForSidebar.flex-row.flex-cross-center(href=`/${article.path}`)
+  img.articleForSidebar-img(src=imageUrl)
+  .articleForSidebar-info.flex-column.flex-around.com-textLimit
+    .articleForSidebar-info--title.com-textLimit #{article.title}
+    .articleForSidebar-info--date.flex-row.flex-cross-center
+      i.material-icons watch_later
+      span #{article.date.format('YYYY年MM月DD日')}
