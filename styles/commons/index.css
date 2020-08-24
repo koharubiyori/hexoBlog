@@ -1,0 +1,64 @@
+:root {
+  --mdc-theme-primary: #6B69F6; }
+
+a {
+  color: black;
+  text-decoration: none; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #666; }
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #eee; }
+
+::selection {
+  color: white;
+  background-color: #666; }
+
+.com-pointer {
+  cursor: pointer; }
+
+.com-textLimit {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+@media screen and (min-width: 720px) {
+  .com-onlyMobile {
+    display: none !important; } }
+
+@media screen and (max-width: 720px) {
+  .com-onlyDesktop {
+    display: none !important; } }
+
+.mdc-top-app-bar__row {
+  height: 56px; }
+
+.mdc-ripple-surface::before,
+.mdc-ripple-surface::after {
+  background-color: white; }
+
+.materialRipple--dark.mdc-ripple-surface.mdc-ripple-upgraded {
+  --mdc-ripple-fg-opacity: 0.08; }
+
+.materialRipple--dark.mdc-ripple-surface::before, .materialRipple--dark.mdc-ripple-surface::after {
+  background-color: black; }
+
+.materialRipple--dark.mdc-ripple-surface::before, .materialRipple--dark.mdc-ripple-surface::after {
+  background-color: black; }
+
+.mdc-ripple-surface.mdc-ripple-upgraded {
+  --mdc-ripple-fg-opacity: 0.32; }
+
+.mdc-snackbar {
+  bottom: initial;
+  top: 56px; }
+
+.mdc-drawer {
+  border: none; }
