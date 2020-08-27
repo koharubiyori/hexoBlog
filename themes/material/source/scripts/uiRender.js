@@ -118,26 +118,26 @@ $(() => {
   $('.mdc-tab-bar').each((index, item) => new mdc.tabBar.MDCTabBar(item))
 
   // 文章内代码块改造
-  $('.highlight').each((index, item) => {
-    $(item).wrap('<div class="highlightWrapper">')
+  // $('.highlight').each((index, item) => {
+  //   $(item).wrap('<div class="highlightWrapper">')
 
-    const language = $(item).attr('class').replace('highlight ', '')
-    const codeBoxHeader = $(`<header class="codeBox-header flex-row flex-between"><div>${language === 'plain' ? '纯文本' : `${language} 代码`}</div></header>`)
-    const copyButton = $(`<div class="codeBox-header--copyButton">复制代码</div>`)
-      .click(() => {
-        const codes = $(item).find('.code').text()
-        const inputTag = $('<input>').val(codes)
-        inputTag.css('position', 'fixed').css('left', '-9999px')
-        $(document.body).append(inputTag)
-        inputTag.focus()
-        document.execCommand('selectAll')
-        document.execCommand('copy')
-        setTimeout(() => inputTag.remove(), 1000)
-        snackbar('已复制代码')
-      })
-      codeBoxHeader.append(copyButton)
-      $(item).prepend(codeBoxHeader)
-  })
+  //   const language = $(item).attr('class').replace('highlight ', '')
+  //   const codeBoxHeader = $(`<header class="codeBox-header flex-row flex-between"><div>${language === 'plain' ? '纯文本' : `${language} 代码`}</div></header>`)
+  //   const copyButton = $(`<div class="codeBox-header--copyButton">复制代码</div>`)
+  //     .click(() => {
+  //       const codes = $(item).find('.code').text()
+  //       const inputTag = $('<input>').val(codes)
+  //       inputTag.css('position', 'fixed').css('left', '-9999px')
+  //       $(document.body).append(inputTag)
+  //       inputTag.focus()
+  //       document.execCommand('selectAll')
+  //       document.execCommand('copy')
+  //       setTimeout(() => inputTag.remove(), 1000)
+  //       snackbar('已复制代码')
+  //     })
+  //     codeBoxHeader.append(copyButton)
+  //     $(item).prepend(codeBoxHeader)
+  // })
 
   // 文章页渲染目录
   if ($('.page-post').length !== 0) {

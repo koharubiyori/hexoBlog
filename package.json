@@ -17,6 +17,7 @@
   "dependencies": {
     "hexo": "^5.0.0",
     "hexo-deployer-git": "^2.1.0",
+    "hexo-filter-cleanup": "^1.2.2",
     "hexo-filter-highlight": "^1.0.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
@@ -29,6 +30,7 @@
     "hexo-renderer-sass": "^0.4.0",
     "hexo-renderer-stylus": "^1.1.0",
     "hexo-server": "^1.0.0",
+    "hexo-uglify": "^1.1.0",
     "hexo-wordcount": "^6.0.1",
     "moment": "^2.27.0"
   }

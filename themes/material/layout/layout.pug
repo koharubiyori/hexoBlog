@@ -14,10 +14,11 @@ html
     title #{title}
     meta(name="description" content=description)
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
-    != css('libs/normalize', 'libs/flex', 'libs/material-components-web', 'libs/mdc.tooltip')
+    script(async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js")
+    != css('libs/normalize', 'libs/flex', 'libs/material-components-web.min', 'libs/mdc.tooltip.min', 'libs/prism')
     != css('styles/commons/index', 'styles/templates/index', 'styles/partial/index', 'styles/layout')
-    != js('libs/jquery', 'libs/material-components-web', 'libs/mdc.tooltip')
-    != js('scripts/common', 'scripts/uiRender')
+    != js('libs/jquery.min', 'libs/material-components-web.min', 'libs/mdc.tooltip.min', 'libs/prism.min')
+    != js('scripts/uiRender')
   body
     img.page-bgImg(src=theme.bgImg)
     include partial/header.pug

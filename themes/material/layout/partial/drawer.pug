@@ -13,6 +13,11 @@
           div.flex.flex-column.flex-center
             div.drawer-totals--label 标签
             div.drawer-totals--value 共#{site.tags.length}个
+          div.flex.flex-column.flex-center#busuanzi_container_site_pv
+            div.drawer-totals--label 总访问
+            div.drawer-totals--value
+              span#busuanzi_value_site_pv
+              span 次
     .drawer-content
       .drawer-list
         each item in theme.drawerList

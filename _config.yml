@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://localhost:4000
+url: https://koharubiyori.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -45,15 +45,15 @@ post_asset_folder: true
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: true
 prismjs:
-  enable: false
-  preprocess: true
+  enable: true
+  preprocess: false
   line_number: true
   tab_replace: ''
 
@@ -144,3 +144,34 @@ jsonContent:
     author: false
     categories: true
     tags: true
+
+uglify:
+  mangle: true
+  output: {}
+  compress: {}
+  exclude:
+    - '*.min.js'
+  es6: true
+hfc_css:
+  enable: true
+  exclude: 
+    - '*.min.css'
+hfc_js:
+  enable: false
+hfc_img:
+  enable: true
+  interlaced: true
+  multipass: false
+  optimizationLevel: 2
+  pngquant: true
+  progressive: true
+  webp: true
+  webpQuality: 75
+  gifslice: true
+  jpegtran: true
+  jpegrecompress: true
+  jpegrecompressQuality: 'medium'
+  optipng: true
+  svgo: true
+hfc_favicons:
+  enable: false
