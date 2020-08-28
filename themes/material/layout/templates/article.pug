@@ -16,7 +16,7 @@ a.tl-articleItem.mdc-elevation--z2(href=`/${article.path}`)
         span #{`${wordcount(article.content)}个字`}
       .iconTextItem
         i.material-icons access_alarm
-        span #{`约使用${min2read(article.content)}分钟阅读`}
+        span #{`约使用${min2read(article.content, { cn: 100, en: 50 })}分钟阅读`}
     div.articleItem-info--row.flex-row.flex-cross-center(style="margin-top:5px")
       //- if article.categories.length
       //-   .articleItem-info--category.iconTextItem

@@ -24,7 +24,7 @@
         span #{`总字数：${wordcount(page.content)}`}
       .post-header--infoBox(style="background-color:#B40486")
         i.material-icons access_alarm
-        span #{`预计阅读时间：${min2read(page.content)}分钟`}
+        span #{`预计阅读时间：${min2read(page.content, { cn: 100, en: 50 })}分钟`}
     .post-header--row.post-header--tags(style="justify-content:flex-start; margin-top:10px")
       each tag in page.tags.data
         a.post-header--tag(href=`/${tag.path}` title=`查看“${tag.name}”标签下的文章`)

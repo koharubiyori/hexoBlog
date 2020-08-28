@@ -253,7 +253,10 @@ $(() => {
     $('.page-search').click(function(e) {
       if (e.target !== this) { return }
       $(this).hide(300)
-      $('.search-result').empty()
+      setTimeout(() => {
+        $('.search-result').empty()
+        $('.search-input').val('')
+      }, 300)
     })
 
     $('.search-input').on('input', e => {
