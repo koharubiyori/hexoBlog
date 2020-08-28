@@ -1,0 +1,132 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><title>Vue框架的Tabs组件封装 - 小春日和の秘密基地</title><meta name="description" content="封装一个类似Vue ElementUI中标签页组件那样，组件的tab按钮文字与tab内容使用同一组件设置的组件。"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><link rel="stylesheet" href="/libs/normalize.css"><link rel="stylesheet" href="/libs/flex.css"><link rel="stylesheet" href="/libs/material-components-web.min.css"><link rel="stylesheet" href="/libs/mdc.tooltip.min.css"><link rel="stylesheet" href="/libs/prism.css"><link rel="stylesheet" href="/styles/commons/index.css"><link rel="stylesheet" href="/styles/templates/index.css"><link rel="stylesheet" href="/styles/partial/index.css"><link rel="stylesheet" href="/styles/layout.css"><script src="/libs/jquery.min.js"></script><script src="/libs/material-components-web.min.js"></script><script src="/libs/mdc.tooltip.min.js"></script><script src="/libs/prism.min.js"></script><script src="/scripts/uiRender.js"></script><meta name="generator" content="Hexo 5.0.2"></head><body><img class="page-bgImg" src="/sourceImages/bg.png"><header class="mdc-top-app-bar mdc-top-app-bar--fixed mdc-elevation--z4"><div class="mdc-top-app-bar__row"><section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start"><button id="drawerButton" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button> <a class="mdc-top-app-bar__title" href="/" style="color:#fff">小春日和の秘密基地</a></section><section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end"><button id="searchButton" class="material-icons mdc-top-app-bar__action-item mdc-icon-button">search</button></section></div></header><div class="mainContainer flex-row"><div class="page-drawer"><div class="drawer-placeholder"></div><aside class="mdc-drawer drawer-body mdc-elevation--z4"><div class="drawer-header flex-column flex-evenly"><div class="drawer-header--content flex-column flex-cross-center"><img class="drawer-avatar" src="/sourceImages/avatar.png"><div class="drawer-userName">小春日和</div><div class="drawer-totals flex-row flex-cross-center"><div class="flex flex-column flex-center"><div class="drawer-totals--label">文章</div><div class="drawer-totals--value">共3篇</div></div><div class="flex flex-column flex-center"><div class="drawer-totals--label">标签</div><div class="drawer-totals--value">共4个</div></div><div class="flex flex-column flex-center" id="busuanzi_container_site_pv"><div class="drawer-totals--label">总访问</div><div class="drawer-totals--value"><span id="busuanzi_value_site_pv"></span><span>次</span></div></div></div></div></div><div class="drawer-content"><div class="drawer-list"><a class="drawer-list-item flex-row flex-cross-center materialRipple materialRipple--dark com-pointer" href="/"><i class="list-item--icon material-icons">home</i><span class="list-item--title">首页</span></a><a class="drawer-list-item flex-row flex-cross-center materialRipple materialRipple--dark com-pointer" href="/2020/08/24/日常/再次启程"><i class="list-item--icon material-icons">info</i><span class="list-item--title">关于博客</span></a></div></div></aside></div><main class="mainContent flex"><div class="page-post"><link rel="stylesheet" href="/styles/post.css"><div class="prevNextArticle flex-row flex-between"><a class="prevArticle materialRipple materialRipple--dark mdc-elevation--z2 flex" href="/2020/08/24/Typescript/在TypeScript的全局类型中使用模块导出的类型/"><div class="label">上一篇</div><div class="title com-textLimit">在TypeScript的全局类型中使用模块导出的类型</div></a><a class="nextArticle materialRipple materialRipple--dark mdc-elevation--z2 flex" href="/2020/08/24/日常/再次启程/"><div class="label">下一篇</div><div class="title com-textLimit">再次启程</div></a></div><div class="post-header"><h2 class="post-header--title">Vue框架的Tabs组件封装</h2><div class="post-header--row com-onlyDesktop"><div class="post-header--infoBox" style="background-color:#007fff"><i class="material-icons">watch_later</i><span>2020年08月24日</span></div><div class="post-header--infoBox" style="background-color:#04b431"><i class="material-icons">menu_book</i><span>总字数：1k</span></div><div class="post-header--infoBox" style="background-color:#b40486"><i class="material-icons">access_alarm</i><span>预计阅读时间：15分钟</span></div></div><div class="post-header--row post-header--tags" style="justify-content:flex-start;margin-top:10px"><a class="post-header--tag" href="/tags/Vue-js/" title="查看“Vue.js”标签下的文章"><i class="material-icons">local_offer</i><span>Vue.js</span></a><a class="post-header--tag" href="/tags/前端技术/" title="查看“前端技术”标签下的文章"><i class="material-icons">local_offer</i><span>前端技术</span></a></div></div><div class="post-body mdc-elevation--z2"><img class="post-body--headImg" src="/2020/08/24/Vue/Vue框架的Tabs组件封装/head.jpeg"><div class="post-body--content"><div class="contentContainer"><p>图片来源：<a target="_blank" rel="noopener" href="https://www.pixiv.net/artworks/59744468">pixiv:ハロウィンチマメ 作者：とけとう</a></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在使用Vue开发的过程中，想必大家都使用过一些UI框架的Tab组件，这些Tab组件一般都由两部分组成：<code>TabContainer</code>和<code>TabItem</code>，在使用时呈以下结构：</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;TabContainer v-model&#x3D;&quot;activeTab&quot; @change&#x3D;&quot;handlerForWasActiveTabChanged&quot;&gt;
+  &lt;TabItem label&#x3D;&quot;水果&quot; :value&#x3D;&quot;1&quot;&gt;
+    &lt;div&gt;苹果&lt;&#x2F;div&gt;
+    &lt;div&gt;橙子&lt;&#x2F;div&gt;
+  &lt;&#x2F;TabItem&gt;
+
+  &lt;TabItem label&#x3D;&quot;蔬菜&quot; :value&#x3D;&quot;2&quot;&gt;
+    &lt;div&gt;白菜&lt;&#x2F;div&gt;
+    &lt;div&gt;蘑菇&lt;&#x2F;div&gt;
+  &lt;&#x2F;TabItem&gt;
+&lt;&#x2F;TabContainer&gt;</code></pre><p>最后生成一组标签，并在点击对应标签时显示对应<code>TabItem</code>中的内容。</p><p>那么问题来了，这种写法最后生成Tabs是如何实现的呢？</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>首先来实现<code>TabItem</code>组件，这个组件非常简单。</p><p>可以理解为这个组件为接下来要实现的<code>TabContainer</code>组件提供数据。</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;template&gt;
+  &lt;!-- 判断父组件(TabContainer)中的activeTab，决定是否显示 --&gt;
+  &lt;div v-if&#x3D;&quot;$parent.activeTab &#x3D;&#x3D;&#x3D; value&quot;&gt;
+    &lt;slot&gt;&lt;&#x2F;slot&gt;   &lt;!-- 声明插槽接收item标签的内容 --&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  &#x2F;&#x2F; 声明要使用的数据，这部分数据会在tabContainer组件中被使用
+  props: [
+    &#39;label&#39;,  &#x2F;&#x2F; 标签名
+    &#39;value&#39;   &#x2F;&#x2F; 标签值
+  ],   
+
+  data() &#123;
+    return &#123;
+
+    &#125;
+  &#125;,
+
+  methods: &#123;
+
+  &#125;
+&#125;</code></pre><p>再来实现关键的<code>TabContainer</code>组件，这个组件包含生成实际内容的逻辑。</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;template&gt;
+  &lt;div&gt;
+    &lt;span 
+      v-for&#x3D;&quot;(item, index) in tabs&quot; 
+      :key&#x3D;&quot;index&quot; 
+      @click&#x3D;&quot;activeTab &#x3D; item.value&quot;
+    &gt;&#123;&#123; item.label &#125;&#125;&lt;&#x2F;span&gt;
+
+    &lt;slot &#x2F;&gt;  &lt;!-- 接收tabItem的内容 --&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  props: [&#39;value&#39;],
+
+  data ()&#123;
+    return &#123;
+      children: []  &#x2F;&#x2F; $children不支持响应式，必须声明一个数组对其进行接管
+    &#125;
+  &#125;,
+
+  &#x2F;&#x2F; 必须在mounted中，在created中$children为空数组
+  mounted() &#123;
+    &#x2F;&#x2F; 这一步有两个意义：一是触发更新，二是接管$children，如果使用$children作为数据源，会发现即使手动更新，$children的数据依然会慢上一拍(拿到的总是上一次的数据)
+    this.children &#x3D; this.$children   
+  &#125;,
+
+  computed: &#123;
+    &#x2F;&#x2F; 将子组件中的label和value取出
+    tabs ()&#123;
+      return this.children.map(item &#x3D;&gt; (&#123; label: item.label, value: item.value &#125;))
+    &#125;,
+
+    activeTab: &#123;
+      get ()&#123; return this.value &#125;,
+      set (val)&#123; this.$emit(&#39;input&#39;, val) &#125;
+    &#125;
+  &#125;,
+
+  methods: &#123;
+
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre><p>到这里就已经实现在前言中描述的用法了。但是，细心的朋友可能已经发现了，上面的代码在动态生成<code>TabItem</code>时会导致无法更新，因为官方在API文档中对于<code>$children</code>属性的说明中也已经提到了：</p><blockquote><p>需要注意 $children 并不保证顺序，也不是响应式的。</p></blockquote><p>上面的代码tabs只会在<code>mounted</code>中更新一次，由对<code>this.children</code>的赋值引起，之后就不会再更新了，因为<code>$children</code>本身不是响应式的。同时我还尝试了使用<code>$slots</code>获取，虽然文档上没有提及，但经过测试<code>$slots</code>也不是响应式的，最后只好在updated钩子中进行脏检查更新，如果有更好的解决办法，也请各路大神不吝赐教。</p><p>以下是脏检查版的<code>TabContainer</code>：</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;template&gt;
+  &lt;div&gt;
+    &lt;span 
+        v-for&#x3D;&quot;(item, index) in tabsData()&quot; 
+        :key&#x3D;&quot;index&quot; 
+        @click&#x3D;&quot;activeTab &#x3D; item.value&quot;
+    &gt;&#123;&#123; item.label &#125;&#125;&lt;&#x2F;span&gt;
+
+    &lt;slot &#x2F;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+  props: [&#39;value&#39;],
+
+  data ()&#123;
+    return &#123;
+      childrenCache: this.$children
+    &#125;
+  &#125;,
+
+  mounted() &#123;
+    this.$forceUpdate()
+  &#125;,
+
+  updated() &#123;
+    if (this.needUpdateTabs()) &#123;
+      this.childrenCache &#x3D; this.$children
+      this.$forceUpdate()
+    &#125;
+  &#125;,
+
+  computed: &#123;
+    activeTab: &#123;
+      get ()&#123; return this.value &#125;,
+      set (val)&#123; this.$emit(&#39;input&#39;, val) &#125;
+    &#125;
+  &#125;,
+
+  methods: &#123;
+    &#x2F;&#x2F; 生成渲染tabs时要用到的数据
+    tabsData() &#123;
+      if (this.childrenCache &#x3D;&#x3D;&#x3D; undefined) return []
+      return this.childrenCache.map(item &#x3D;&gt; (&#123; label: item.label, value: item.value &#125;))
+    &#125;,
+
+    &#x2F;&#x2F; 检查是否需要更新视图
+    needUpdateTabs() &#123;
+      if (this.childrenCache.length !&#x3D;&#x3D; this.$children.length) return true
+      return this.childrenCache.some((item, index) &#x3D;&gt; item !&#x3D;&#x3D; this.$children[index])
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre></div><div class="articleLicenses"><p>版权声明：本文为原创文章，版权归 小春日和 所有</p><p style="word-break:break-all"><span>文章链接：</span><a id="articleLink" href="javascript:void()" aria-describedby="tooltip-copyArticleLink">https://koharubiyori.github.io/2020/08/24/Vue/Vue%E6%A1%86%E6%9E%B6%E7%9A%84Tabs%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/</a></p><p><span>所有原创文章采用&nbsp;</span><a target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">署名-非商业性使用 4.0 国际 (CC BY-NC 4.0)</a></p><p>您可以自由转载和修改，但必须保证在显著位置注明文章来源，且不能用于商业目的。</p><div id="tooltip-copyArticleLink" class="mdc-tooltip" role="tooltip" aria-hidden="true"><div class="mdc-tooltip__surface"><lorem>点击复制链接</lorem></div></div></div></div></div></div></main><div class="page-sidebar"><div class="sidebar-placeholder"></div><div class="sidebar-body mdc-elevation--z4"><div class="articleContents"><div class="articleContents-title">目录</div></div><div class="katakoto"><div class="katakoto-title">只言片语</div><div class="katakoto-items"><div class="katakoto-item"><div class="katakoto-item--content">第三次重建博客，希望这次不会没写多少东西就又关了...</div><div class="katakoto-item--date">—— 2020年08月24日 14:59</div></div></div></div><div class="tags"><div class="tags-title">内容标签</div><a class="tags-item" href="/tags/Typescript/" title="查看“Typescript”标签下的文章"><i class="material-icons">local_offer</i><span>Typescript</span></a><a class="tags-item" href="/tags/Vue-js/" title="查看“Vue.js”标签下的文章"><i class="material-icons">local_offer</i><span>Vue.js</span></a><a class="tags-item" href="/tags/前端技术/" title="查看“前端技术”标签下的文章"><i class="material-icons">local_offer</i><span>前端技术</span></a><a class="tags-item" href="/tags/日常/" title="查看“日常”标签下的文章"><i class="material-icons">local_offer</i><span>日常</span></a></div></div></div><div class="page-search"><div class="search-body"><div class="search-input-container flex-row flex-cross-center"><i class="material-icons">search</i><input class="search-input flex" placeholder="搜索文章..."></div><div class="search-result" data-dirty="false" data-emptyresult="false"></div></div></div></div><div class="backTopButton mdc-elevation--z4 flex-row flex-center is-hide materialRipple"><i class="material-icons">north</i></div></body></html>
