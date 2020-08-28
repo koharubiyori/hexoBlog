@@ -104,7 +104,7 @@ theme: material
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/koharubiyori/koharubiyori.github.io.git
+  repo: https://gitee.com/koharubiyori/koharubiyori.git
 
 jsonContent:
   meta: true
