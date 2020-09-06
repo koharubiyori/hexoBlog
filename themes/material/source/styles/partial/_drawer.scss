@@ -1,4 +1,4 @@
-@import '../utils.scss';
+@import '../_utils.scss';
 
 .page-drawer {
   .drawer-placeholder {
@@ -50,7 +50,7 @@
   }
 
   .drawer-header {
-    height: 200px;
+    height: 210px;
     box-sizing: border-box;
     position: relative;
     background-color: var(--mdc-theme-primary);
@@ -88,11 +88,12 @@
       margin-top: 10px;
       text-shadow: 0 0 3px black;
       color: white;
+      font-size: 17px;
     }
 
     .drawer-totals {
       // color: white;
-      margin-top: 10px;
+      margin-top: 20px;
       text-shadow: 0 0 3px black;
       color: white;
 

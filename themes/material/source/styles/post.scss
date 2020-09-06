@@ -1,4 +1,4 @@
-@import './utils.scss';
+@import './_utils.scss';
 
 .page-post {
   margin-bottom: 100px;
@@ -181,7 +181,9 @@
           padding: 10px;
           border-width: 7px;
           background-color: white;
-          border-left: 7px var(--mdc-theme-primary) solid;
+          border-left-width: 7px;
+          border-left-style: solid;
+          border-left-color: var(--mdc-theme-primary);
           margin: 15px 0;
   
           > p {

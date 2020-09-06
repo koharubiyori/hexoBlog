@@ -1,0 +1,33 @@
+
+.alertTag {
+  padding: 10px;
+  border-width: 7px;
+  background-color: white;
+  border-left-width: 7px;
+  border-left-style: solid;
+  margin: 15px 0;
+
+  &[data-type="info"] {
+    border-left-color: #409eff;
+    color: #409eff;
+    background-color: rgba($color: #ecf5ff, $alpha: 0.8);  
+  }
+
+  &[data-type="warning"] {
+    border-left-color: #e6a23c;
+    color: #e6a23c;
+    background-color: rgba($color: #fdf6ec, $alpha: 0.8);  
+  }
+  
+  &[data-type="danger"] {
+    border-left-color: #f56c6c;
+    color: #f56c6c;
+    background-color: rgba($color: #fef0f0, $alpha: 0.8);  
+  }
+
+  &[data-type="success"] {
+    border-left-color: #67c23a;
+    color: #67c23a;
+    background-color: rgba($color: #f0f9eb, $alpha: 0.8);  
+  }
+}

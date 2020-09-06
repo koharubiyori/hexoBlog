@@ -38,7 +38,7 @@
         p 版权声明：本文为原创文章，版权归 小春日和 所有
         p(style="word-break:break-all")
           span 文章链接：
-          a#articleLink(href="javascript:void()" aria-describedby="tooltip-copyArticleLink") #{page.permalink}
+          a#articleLink(href="javascript:void()" aria-describedby="tooltip-copyArticleLink") #{decodeURIComponent(page.permalink)}
         p
           span 所有原创文章采用&nbsp;
           a(target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh") 署名-非商业性使用 4.0 国际 (CC BY-NC 4.0)

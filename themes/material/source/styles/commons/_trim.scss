@@ -1,0 +1,40 @@
+.mdc-top-app-bar__row {
+  height: 56px;
+}
+
+// 材料设计波纹效果配置
+.mdc-ripple-surface::before, 
+.mdc-ripple-surface::after {
+  background-color: white;
+}
+
+// 黑色波纹
+.materialRipple--dark {
+  &.mdc-ripple-surface {
+    &.mdc-ripple-upgraded {
+      --mdc-ripple-fg-opacity: 0.08;
+    }
+    
+    &::before, &::after {
+      background-color: black;
+    }
+  }
+  
+  &.mdc-ripple-surface::before, 
+  &.mdc-ripple-surface::after {
+    background-color: black;
+  }
+}
+
+.mdc-ripple-surface.mdc-ripple-upgraded {
+  --mdc-ripple-fg-opacity: 0.32;
+}
+
+.mdc-snackbar {
+  bottom: initial;
+  top: 56px;
+}
+
+.mdc-drawer {
+  border: none;
+}

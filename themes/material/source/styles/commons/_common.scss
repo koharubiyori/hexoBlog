@@ -1,0 +1,22 @@
+// 公用样式
+.com-pointer {
+  cursor: pointer;
+}
+
+.com-textLimit {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.com-onlyMobile {
+  @include onDesktop {
+    display: none !important;
+  }
+}
+
+.com-onlyDesktop {
+  @include onMobile {
+    display: none !important;
+  }
+}

@@ -1,4 +1,8 @@
-@import '../utils.scss';
+@import 
+  '../_utils.scss',
+  './common',
+  './trim',
+  './tags';
 
 :root {
   --mdc-theme-primary: #6B69F6; 
@@ -31,66 +35,5 @@ a {
   background-color: #666;
 }
 
-// 公用样式
-.com-pointer {
-  cursor: pointer;
-}
 
-.com-textLimit {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
 
-.com-onlyMobile {
-  @include onDesktop {
-    display: none !important;
-  }
-}
-
-.com-onlyDesktop {
-  @include onMobile {
-    display: none !important;
-  }
-}
-
-.mdc-top-app-bar__row {
-  height: 56px;
-}
-
-// 材料设计波纹效果配置
-.mdc-ripple-surface::before, 
-.mdc-ripple-surface::after {
-  background-color: white;
-}
-
-// 黑色波纹
-.materialRipple--dark {
-  &.mdc-ripple-surface {
-    &.mdc-ripple-upgraded {
-      --mdc-ripple-fg-opacity: 0.08;
-    }
-    
-    &::before, &::after {
-      background-color: black;
-    }
-  }
-  
-  &.mdc-ripple-surface::before, 
-  &.mdc-ripple-surface::after {
-    background-color: black;
-  }
-}
-
-.mdc-ripple-surface.mdc-ripple-upgraded {
-  --mdc-ripple-fg-opacity: 0.32;
-}
-
-.mdc-snackbar {
-  bottom: initial;
-  top: 56px;
-}
-
-.mdc-drawer {
-  border: none;
-}
