@@ -15,6 +15,7 @@
     "version": "5.0.2"
   },
   "dependencies": {
+    "@types/jquery": "^3.5.2",
     "hexo": "^5.0.0",
     "hexo-deployer-git": "^2.1.0",
     "hexo-filter-cleanup": "^1.2.2",

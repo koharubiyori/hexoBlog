@@ -11,23 +11,16 @@
   transition: all 0.3s;
   display: none;
 
-  @keyframes search-fadeSink {
-    from {
-      transform: translateX(-50%) translateY(-30px);
-      opacity: 0;
-    }
-  }
-
   .search-body {
     max-width: 800px;
     width: 60%;
     position: fixed;
-    top: 40px;
+    top: 0;
     left: 50%;
+    opacity: 0;
     transform: translateX(-50%);
-    animation: search-fadeSink 0.4s;
     @include onMobile {
-      width: 80%;
+      width: 90%;
     }
   }
 
@@ -55,6 +48,15 @@
     margin-top: 10px;
     overflow: auto;
     max-height: calc(100vh - 100px);
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }    
+
+    @include onMobile {
+      max-height: calc(100vh - 30px);
+    }
 
     &[data-dirty="true"][data-emptyResult="true"] {
       &::before {
@@ -77,6 +79,13 @@
       text-decoration: none;
       box-shadow: 0 0 5px #666;
       margin-bottom: 15px;
+      animation: searchItem-fadeIn 0.3s;
+      @keyframes searchItem-fadeIn {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+      }
 
       .title {
         border-bottom: 1px #ccc solid;

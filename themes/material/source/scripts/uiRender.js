@@ -246,13 +246,15 @@ $(() => {
     loadSearchData()
 
     $('#searchButton').click(() => {
-      $('.page-search').show(200)
+      $('.page-search').fadeIn(300)
+      $('.search-body').animate({ top: 40, opacity: 1 }, 300)
       loadSearchData()
     })
     
     $('.page-search').click(function(e) {
       if (e.target !== this) { return }
-      $(this).hide(300)
+      $('.search-body')
+        .animate({ top: 0, opacity: 0 }, 300, () => $('.page-search').hide())
       setTimeout(() => {
         $('.search-result').empty()
         $('.search-input').val('')

@@ -23,7 +23,7 @@ fs.mkdirSync(postsFolderPath, { recursive: true })
 fs.mkdirSync(path.resolve(postsFolderPath, title), { recursive: true })
 try {
   fs.writeFileSync(path.resolve(postsFolderPath, title + '.md'), articleContent, { flag: 'wx' })
-  console.log(`已创建文件【${folder}/${title}.md！】`)
+  console.log(`已创建文件【${folder}/${title}.md】！`)
 } catch(e) {
   if (e.code === 'EEXIST') return console.log(`【${folder}/${title}.md】已存在，请更换其他名称`)
   console.log(e)
