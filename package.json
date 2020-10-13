@@ -9,7 +9,8 @@
     "deploy": "hexo deploy",
     "server": "hexo server",
     "article": "node ./actions/addArticle",
-    "katakoto": "node ./actions/addKatakoto"
+    "katakoto": "node ./actions/addKatakoto",
+    "bd": "yarn build && yarn deploy"
   },
   "hexo": {
     "version": "5.0.2"
