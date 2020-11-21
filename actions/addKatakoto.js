@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
+// [content]
 const katakotoContent = process.argv[2]
 if (!katakotoContent) return console.log('请输入只言片语的内容！')
 

@@ -64,9 +64,8 @@
 
         .katakoto-item {
           float: left;
-          width: 260px;
-          box-sizing: border-box;
-          padding-right: 10px;
+          width: 250px;
+          margin-right: 10px;
 
           &--content {
             font-size: 14px;
@@ -77,6 +76,10 @@
             text-align: right;
             font-size: 13px;
             margin-top: 10px;
+          }
+
+          &:last-child {
+            margin-left: 10px;
           }
         }
       }

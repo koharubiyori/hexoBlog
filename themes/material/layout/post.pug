@@ -1,18 +1,5 @@
 .page-post
   != css('styles/post')
-  .prevNextArticle.flex-row.flex-between
-    if page.prev
-      a.prevArticle.materialRipple.materialRipple--dark.mdc-elevation--z2.flex(href=`/${page.prev.path}`)
-        div.label 上一篇
-        div.title.com-textLimit #{page.prev.title}
-    else 
-      div
-    if page.next
-      a.nextArticle.materialRipple.materialRipple--dark.mdc-elevation--z2.flex(href=`/${page.next.path}`)
-        div.label 下一篇
-        div.title.com-textLimit #{page.next.title}
-    else 
-      div
   .post-header
     h2.post-header--title #{page.title}
     .post-header--row.com-onlyDesktop
@@ -48,3 +35,17 @@
             lorem 点击复制链接
           </div>
         </div>
+  .prevNextArticle.flex-row.flex-between
+    if page.prev
+      a.prevArticle.materialRipple.materialRipple--dark.mdc-elevation--z2.flex(href=`/${page.prev.path}` title=page.prev.title)
+        div.label 上一篇
+        div.title.com-textLimit #{page.prev.title}
+    else 
+      div
+    if page.next
+      a.nextArticle.materialRipple.materialRipple--dark.mdc-elevation--z2.flex(href=`/${page.next.path}` title=page.next.title)
+        div.label 下一篇
+        div.title.com-textLimit #{page.next.title}
+    else 
+      div
+  #post-comments

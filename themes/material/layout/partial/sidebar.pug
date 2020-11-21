@@ -73,7 +73,7 @@
     .katakoto
       .katakoto-title 只言片语
       .katakoto-items
-        each katakoto in site.data.katakoto.reverse()
+        each katakoto in site.data.katakoto
           .katakoto-item
             .katakoto-item--content #{katakoto.content}
             .katakoto-item--date #{`—— ${moment(katakoto.date).format('YYYY年MM月DD日 HH:mm')}`}

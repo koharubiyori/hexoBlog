@@ -5,14 +5,11 @@
   position: relative;
 
   .prevNextArticle {
-    position: absolute;
-    top: calc(100% + 15px);
-    left: 0;
-
+    margin: 20px 0;
+    
     .prevArticle, .nextArticle {
       text-decoration: none;
-      max-width: 200px;
-      height: 60px;
+      max-width: 250px;
       box-sizing: border-box;
       padding: 10px;
       background-color: rgba($color: white, $alpha: 0.9);
@@ -138,26 +135,17 @@
         h2 {
           border-bottom: 1px #ccc solid;
           padding-bottom: 5px;
-  
+        }
+
+        h2, h3 {
           .headerlink {
             &::before {
               content: '#';
               display: inline-block;
-              width: 0;
               color: var(--mdc-theme-primary);    
               transition: all 0.2s;   
-              opacity: 0;     
               text-decoration: none;
-            }
-          }
-  
-          &:hover {
-            .headerlink {
-              &::before {
-                width: auto;
-                margin-right: 10px;
-                opacity: 1;
-              }
+              margin-right: 5px;
             }
           }
         }
@@ -253,6 +241,39 @@
       pre {
         font-family: 'Consolas';
       }
+    }
+  }
+}
+
+// 评论栏样式
+#post-comments {  
+  .vpanel, .vcount, .vcards, .vempty {
+    background-color: rgba($color: white, $alpha: 0.9);
+    border-radius: 5px;
+
+    @include onMobile {
+      border-radius: 0;
+    }
+  }
+
+  .vcount {
+    border-radius: 5px 5px 0 0;
+    font-weight: initial;
+    text-indent: 10px;
+    font-size: 18px;
+  }
+
+  .vcards {
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+
+  .vpower {
+    color: #eee;
+
+    @include onMobile {
+      padding-right: 10px;
     }
   }
 }

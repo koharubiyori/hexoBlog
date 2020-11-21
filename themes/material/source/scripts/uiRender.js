@@ -1,5 +1,5 @@
 $(() => {
-  const isMobile = () => window.screen.height <= 720
+  const isMobile = () => window.screen.width <= 720
 
   !isMobile() && $(document.body).css('min-width', 1100)
 
@@ -319,4 +319,11 @@ $(() => {
       }
     })
   })()
+  
+  new Valine({
+    el:'#post-comments',
+    appId: 'Ul5NbwoIVOstKoK9Bwv36u4D-gzGzoHsz',
+    appKey: 'FMzTWsKMYHIu83jzJwUkLwgQ',
+    placeholder: '说点什么吧...'
+  })
 })
