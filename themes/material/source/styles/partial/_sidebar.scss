@@ -31,19 +31,20 @@
         display: block;
         text-decoration: none;
         margin: 5px 0;
-        font-size: 17px;
         transition: all 0.2s;
+        font-size: 14px;
+        color: #666;
 
         &[data-level="3"] {
           margin-left: 10px;
-          font-size: 16px;
+          font-size: 13px;
         }
 
         &.is-active {
-          color: var(--mdc-theme-primary);
+          color: black;
           font-weight: bold;
-          border-bottom: 3px var(--mdc-theme-primary) solid;
-          padding-bottom: 3px;
+          // border-bottom: 3px var(--mdc-theme-primary) solid;
+          // padding-bottom: 3px;
         }
       }
     }
