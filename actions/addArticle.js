@@ -3,7 +3,7 @@ const path = require('path')
 const moment = require('moment')
 
 // [category, title]
-if (!process.argv[2] || !process.argv[3]) return console.log('请输入文章类和与标题') 
+if (!process.argv[2] || !process.argv[3]) return console.log('请输入文章分类和与标题') 
 
 const folder = process.argv[2]
 if (!folder) return console.log('请输入文章分类和标题！') 

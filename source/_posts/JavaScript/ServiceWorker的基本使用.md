@@ -36,7 +36,7 @@ async function initWorker() {
   const serviceWorkerRegistration = await navigator.serviceWorker.register('worker.js', { scope: './' })
   await navigator.serviceWorker.ready // 等待准备完成
 
-  const worker = serviceWorkerRegistration.active!  // 返回当前活动的ServiceWorker
+  const worker = serviceWorkerRegistration.active  // 返回当前活动的ServiceWorker
   return worker
 }
 ```
@@ -128,6 +128,11 @@ self.addEventListener('message', e => {
 ```
 
 顺便说句，因为MessageChannel传输数据也用了结构化克隆算法，所以可以拿来进行深拷贝，简单又安全，唯一的问题是至少要IE10。
+
+### 调试
+
+* chrome://inspect/#service-workers
+* chrome://serviceworker-internals (提供了更详细的信息)
 
 ## 扩展链接
 
