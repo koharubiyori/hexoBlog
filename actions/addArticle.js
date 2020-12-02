@@ -14,7 +14,7 @@ const postsFolderPath = path.resolve(__dirname, '../source/_posts', folder)
 const articleContent = `---
 title: ${title}
 date: ${moment().format('YYYY-MM-DD HH:mm:ss')}
-tags: 
+tags: ${folder}
 image: /${moment().format('YYYY/MM/DD')}/${folder}/${title}/head.jpg
 excerpt: 
 ---
