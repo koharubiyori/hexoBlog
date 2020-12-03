@@ -169,8 +169,12 @@ const onParamsChange = handler => => {
 import Taro, { useRouter } from '@tarojs/taro'
 import store from '~/redux'
 import routeActions from '~/redux/route/actions'
-import { RouteParamsMaps } from '~/routes'
 import { Unsubscribe } from 'redux'
+
+// 导航器的泛型，路由路径映射路由参数。这个请自己实现
+interface RouteParamsMaps {
+  [routePath: string]: object
+}
 
 type MyNavigate = <
   Path extends keyof RouteParamsMaps, 
