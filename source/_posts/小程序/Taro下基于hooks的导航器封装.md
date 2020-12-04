@@ -90,7 +90,7 @@ function useMyRouter() {
 原生导航使用EventChannel作为新开页面与上一个页面的通信方式，依靠在EventChannel上订阅及触发事件的方式进行数据传递，
 虽说直接使用也还算可以，但只能在两个页面之间通信，个人感觉还是不够便捷。
 
-要实现参数变化的监听就必须依赖一个观察者模式的模型，这里我使用了React中常用的redux保存参数对象。
+要实现参数变化的监听就必须依赖一个观察者模式的模型，这里我使用了redux保存参数对象。
 
 ``` ts
 // 向redux store中添加route模块，代替routeParams对象来存储路由参数。
@@ -135,6 +135,7 @@ const onParamsChange = handler => => {
     const currentRouteState = store.getState().route
     const currentParams = currentRouteState.pageParams[debasePath(plainRouter.path!)]
 
+    // 开始进行上一次状态与本次状态的对比
     let isChanged = false
     if (currentParams === undefined) { return }
 
@@ -163,12 +164,12 @@ const onParamsChange = handler => => {
 ```
 以上就完成了导航器的封装。
 
-最后这里是一个ts的封装导航器实现：
+最后这里是一个使用ts的完整封装导航器实现：
 
 ``` ts
 import Taro, { useRouter } from '@tarojs/taro'
 import store from '~/redux'
-import routeActions from '~/redux/route/actions'
+import routeActions from '~/redux/route/actions'  // 请自行向redux添加模块
 import { Unsubscribe } from 'redux'
 
 // 导航器的泛型，路由路径映射路由参数。这个请自己实现
@@ -259,13 +260,15 @@ export default function useMyRouter<RouteParams = { [key: string]: any }>(): MyR
     })
   }
 
+  const getParams = () => ({
+    ...routeParams[debasePath(plainRouter.path)],
+    ...plainRouter.params
+  })
+
   return {
     path: plainRouter.path!,
-    params: {
-      ...store.getState().route.pageParams[debasePath(plainRouter.path!)],
-      ...plainRouter.params
-    } ,
-    getParams: () => store.getState().route.pageParams[debasePath(plainRouter.path!)],
+    params: getParams(),
+    getParams,
     ...navigation,
     onParamsChange
   }

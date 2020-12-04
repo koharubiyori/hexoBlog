@@ -18,6 +18,12 @@ tags: ${folder}
 image: /${moment().format('YYYY/MM/DD')}/${folder}/${title}/head.jpg
 excerpt: 
 ---
+
+图片来源：[pixiv:title 作者：author](source url)
+
+## 前言
+
+
 `
 
 fs.mkdirSync(postsFolderPath, { recursive: true })
