@@ -88,6 +88,21 @@ $(() => {
   setTimeout(() => {
     location.hash && window.scrollTo(0, window.scrollY - 60)
   }, 1000)
+
+  // 为文章中的图片添加预览器
+  document.querySelector('.page-post').querySelectorAll('img').forEach(item => {
+    const widgetVisibleLevel = 3  
+    const toolbarItems = ['zoomIn', 'zoomOut', 'oneToOne', 'reset', 'rotateLeft', 'rotateRight', 'flipHorizontal', 'flipVertical']
+    const toolbarItemsConfig = Object.fromEntries(
+      toolbarItems.map(item => [item, widgetVisibleLevel])
+    )
+    
+    new Viewer(item, {
+      title: false,
+      navbar: false,
+      toolbar: toolbarItemsConfig
+    })
+  })
 })
 
 
