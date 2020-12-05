@@ -18,7 +18,7 @@
           i.material-icons local_offer
           span #{tag.name}
   .post-body.mdc-elevation--z2
-    img.post-body--headImg(src=page.image)
+    img.post-body--headImg(src=page.image style=`object-position:${page.imagePosition}`)
     .post-body--content
       div.contentContainer !{page.content}
       .articleLicenses

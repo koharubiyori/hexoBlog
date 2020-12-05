@@ -20,9 +20,15 @@
               span 次
     .drawer-content
       .drawer-list
-        each item in theme.drawerList
-          a.drawer-list-item.flex-row.flex-cross-center.materialRipple.materialRipple--dark.com-pointer(href=item.link)
-            i.list-item--icon.material-icons #{item.icon}
-            span.list-item--title #{item.title}
-
-        
+        a.drawer-list-item.flex-row.flex-cross-center.materialRipple.materialRipple--dark.com-pointer(href='/')
+          i.list-item--icon.material-icons home
+          span.list-item--title 首页
+        a.drawer-list-item.flex-row.flex-cross-center.materialRipple.materialRipple--dark.com-pointer(href='/2020/08/24/日常/再次启程')
+          i.list-item--icon.material-icons info
+          span.list-item--title 关于博客   
+        a.drawer-list-item.flex-row.flex-cross-center.materialRipple.materialRipple--dark.com-pointer(href='https://github.com/koharubiyori')
+          i.mdi-set.mdi-github(style="font-size:24px; color:var(--mdc-theme-primary); line-height:1.1")
+          span.list-item--title Github
+        a.drawer-list-item.flex-row.flex-cross-center.materialRipple.materialRipple--dark.com-pointer(href='https://zh.moegirl.org.cn/User:%E6%9D%B1%E6%9D%B1%E5%90%9B')
+          strong(style="font-size:18px; color:var(--mdc-theme-primary); margin-left:3px") 萌
+          span.list-item--title 萌娘百科

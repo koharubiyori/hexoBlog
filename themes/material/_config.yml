@@ -2,11 +2,3 @@ bgImg: '/sourceImages/bg.png'
 
 drawerBgImg: '/sourceImages/drawerBg.jpg'
 avatarImg: '/sourceImages/avatar.png'
-drawerList:
-  - icon: home
-    title: 首页
-    link: /
-  - icon: info
-    title: 关于博客
-    link: /2020/08/24/日常/再次启程
-  

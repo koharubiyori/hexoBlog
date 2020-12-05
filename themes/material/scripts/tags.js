@@ -1,6 +1,8 @@
+
+
 /**
  * 警示块
- * @param {['info' | 'success' | 'warning' | 'danger', string])} type 
+ * @param {['info' | 'success' | 'warning' | 'danger', string])} args
  * @param {string} content
  */
 function alertTag([type = 'info', text], content) {

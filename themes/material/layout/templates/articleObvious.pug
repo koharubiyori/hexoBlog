@@ -3,12 +3,12 @@
 
 a.tl-articleObviousItem.mdc-elevation--z2(href=`/${article.path}`)
   .articleObviousItem-image-wrapper
-    img.articleObviousItem-image(src=article.image)
+    img.articleObviousItem-image(src=article.image style=`object-position:${article.imagePosition}`)
   .articleObviousItem-main
     .articleObviousItem-main--title #{article.title}
     hr
     .articleObviousItem-main--info
-      .articleObviousItem-main--row(style="font-size:15px") #{article.excerpt}
+      .articleObviousItem-main--row #{article.excerpt}
       .articleObviousItem-main--row.flex-row.flex-cross-center(style="margin-top:15px")
         .iconTextItem
           i.material-icons watch_later

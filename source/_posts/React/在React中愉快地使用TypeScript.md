@@ -3,10 +3,11 @@ title: 在React中愉快地使用TypeScript
 date: 2020-12-04 13:45:39
 tags: [React, TypeScript]
 image: /2020/12/04/React/在React中愉快地使用TypeScript/head.jpg
-excerpt: 
+imagePosition: center 21%
+excerpt: 今日はチノちゃんの誕生日だ！
 ---
 
-图片来源：[pixiv:title 作者：author](source url)
+图片来源：[pixiv:💒 作者：もくず](https://www.pixiv.net/artworks/73737464)
 
 ## 前言
 
@@ -34,7 +35,7 @@ export interface Props {
   title: string
 } 
 
-// 当组件使用了高阶组件，注入了其他属性时，需要在这里将导出的类型放在这里和Props组成联合类型
+// 当组件使用了高阶组件，注入了其他属性时，需要在这里将导出的类型放在这里和Props组成交叉类型
 // 这样才能在组件中正常提示
 type FinalProps = Props
 
@@ -170,13 +171,13 @@ const articleHeaderRef = useRef<ArticleHeaderRef | undefined | null>() // 函数
 ```
 ## 高阶组件注入类型
 
-高阶组件是跨组件复用逻辑的利器，可以看做是一个装饰器，不过为高阶组件添加类型有些小坑。
+高阶组件是跨组件复用逻辑的利器，可以看做是一个装饰器。
 
 首先重温两点知识：
 * 高阶组件接收一个组件，返回一个新组件
 * 装饰器模式要求不能改变被装饰者的接口
 
-明确了这两点，就可以知道：要为高阶组件定义的传入参数类型是一个返回组件实例的类，而不是组件实例；其次，返回的类型就是传入的类型，注入到props的属性要通过为FinalProps追加联合类型来实现。
+明确了这两点，就可以知道：要为高阶组件定义的传入参数类型是一个返回组件实例的类，而不是组件实例；其次，返回的类型就是传入的类型，注入到props的属性要通过为FinalProps追加交叉类型来实现。
 
 话说当初为了实现装饰器自动添加注入的props类型，试了一天最后也没实现，想不通为什么高阶组件已经明确定义了返回的类型用了装饰器为什么还是没返回新的类型，后来才想明白装饰器这个设计模式本身就是要求不能改变接口。
 
@@ -205,9 +206,10 @@ interface UserStoreProps {
 // 使用
 export interface Props {}
 
+// 向FinalProps追加交叉类型
 type FinalProps = Props & UserStoreProps
 
-// 省略代码...
+// 省略其余代码...
 ```
 
-## 原生api追加类型
+暂时就是这些，未来还可能会补充。

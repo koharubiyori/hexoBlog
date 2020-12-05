@@ -1,12 +1,10 @@
 ---
-title: React中高阶组件的两种应用
+title: React class组件中复用状态及生命周期
 date: 2020-12-04 10:36:27
 tags: React
-image: /2020/12/04/React/React中高阶组件的两种应用/head.jpg
+image: /2020/12/04/React/React class组件中复用状态及生命周期/head.jpg
 excerpt: 原来Class组件也是可以复用生命周期中的逻辑的。
 ---
-
-图片来源：[pixiv:title 作者：author](source url)
 
 ## 前言
 
@@ -119,4 +117,6 @@ function HOC(Component) {
 }
 ```
 
-### 支持TypeScript
+### TypeScript支持
+
+见：[在React中愉快地使用TypeScript#高阶组件注入类型](/2020/12/04/React/在React中愉快地使用TypeScript#高阶组件注入类型)
