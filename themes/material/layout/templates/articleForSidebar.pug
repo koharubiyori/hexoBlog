@@ -2,7 +2,7 @@
   article: typeof page.posts.data[number]
   imageUrl: string
 
-a.tl-articleForSidebar.flex-row.flex-cross-center(href=`/${article.path}`)
+a.tl-articleForSidebar.flex-row.flex-cross-center(href=`/${article.path}` title=article.title)
   img.articleForSidebar-img(src=imageUrl)
   .articleForSidebar-info.flex-column.flex-around.com-textLimit
     .articleForSidebar-info--title.com-textLimit #{article.title}

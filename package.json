@@ -37,5 +37,8 @@
     "koa": "^2.13.0",
     "koa-router": "^9.4.0",
     "moment": "^2.27.0"
+  },
+  "devDependencies": {
+    "hexo-submit-urls-to-search-engine": "^2.0.0"
   }
 }
