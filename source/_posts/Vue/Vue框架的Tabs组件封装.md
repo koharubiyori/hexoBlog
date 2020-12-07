@@ -2,7 +2,7 @@
 title: Vue框架的Tabs组件封装
 date: 2020-08-24 12:51:32
 tags: [Vue.js, 前端技术]
-image: /2020/08/24/Vue/Vue框架的Tabs组件封装/head.jpeg
+image: https://bn1302files.storage.live.com/y4m7bKPDtWR7kozrrmHPlP9Qc6nHbWIPOYeGciDP98qclbpWeuh7lYASAAb9s8gpW9SLKgn4cmN3D8tVQLcESJlY1Pw07joLNwGIJcV5HoiUh8Vg38PhAfUUmfHP_3u8OF96TT3z-8qAJs2EcjR5_MO2ZWN2QuLj9AE0bPIoJb5wOuFZLuN1z4CdcBBYz0jz9xz?width=1024&height=724&cropmode=none
 excerpt: 封装一个类似Vue ElementUI中标签页组件那样，组件的tab按钮文字与tab内容使用同一组件设置的组件。
 ---
 

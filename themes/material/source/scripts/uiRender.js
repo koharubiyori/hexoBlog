@@ -35,7 +35,7 @@ $(() => {
     setInterval(() => {
       currentIndex++
       if (currentIndex > maxIndex) currentIndex = 0
-      katakoto.css('transform', `translateX(-${currentIndex * 270}px)`)
+      katakoto.css('transform', `translateX(-${currentIndex * 254}px)`)
     }, 4000)
   })()
 
@@ -90,19 +90,24 @@ $(() => {
   }, 1000)
 
   // 为文章中的图片添加预览器
-  document.querySelector('.page-post').querySelectorAll('img').forEach(item => {
-    const widgetVisibleLevel = 3  
-    const toolbarItems = ['zoomIn', 'zoomOut', 'oneToOne', 'reset', 'rotateLeft', 'rotateRight', 'flipHorizontal', 'flipVertical']
-    const toolbarItemsConfig = Object.fromEntries(
-      toolbarItems.map(item => [item, widgetVisibleLevel])
-    )
-    
-    new Viewer(item, {
-      title: false,
-      navbar: false,
-      toolbar: toolbarItemsConfig
-    })
-  })
+  ;(() => {
+    const postPageContainerEl = document.querySelector('.page-post')
+    if (postPageContainerEl) {
+      postPageContainerEl.querySelectorAll('img').forEach(item => {
+        const widgetVisibleLevel = 3  
+        const toolbarItems = ['zoomIn', 'zoomOut', 'oneToOne', 'reset', 'rotateLeft', 'rotateRight', 'flipHorizontal', 'flipVertical']
+        const toolbarItemsConfig = Object.fromEntries(
+          toolbarItems.map(item => [item, widgetVisibleLevel])
+        )
+        
+        new Viewer(item, {
+          title: false,
+          navbar: false,
+          toolbar: toolbarItemsConfig
+        })
+      })
+    }
+  })()
 })
 
 

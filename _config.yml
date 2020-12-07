@@ -188,7 +188,7 @@ hexo_submit_urls_to_search_engine:
   baidu: 1 # 是否向baidu提交，可选值：1 | 0（0：否；1：是）
   txt_path: submit_urls.txt ## 文本文档名， 需要推送的链接会保存在此文本文档里
   baidu_host: https://koharubiyori.gitee.io ## 在百度站长平台中注册的域名
-  baidu_token: 0
+  baidu_token: nPBajGc8tapAStfZ
   bing_host: https://cjh0613.github.io ## 在bing站长平台中注册的域名
   bing_token: 0
   google_host: https://cjh0613.github.io ## 在google站长平台中注册的域名

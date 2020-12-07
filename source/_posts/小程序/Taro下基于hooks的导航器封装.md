@@ -2,7 +2,7 @@
 title: Taro下基于hooks的导航器封装
 date: 2020-12-02 22:59:42
 tags: [小程序, Taro, React]
-image: /2020/12/02/小程序/Taro下基于hooks的导航器封装/head.jpg
+image: https://bn1302files.storage.live.com/y4m6Eyvmtj9VElNOKTo0ew_ZoNXIMpirPKpd2_uwvOIf5BXY-a6llgL9UeGVsfpsIOj5NqBey4JtlkVWpJVKKuONIrFCZNfSjAIlqM7yFMYS8ptq_KGPjLM08yvOFOz136WRHsRq1tIIOIMAl1qnokWW_VztGtf1xsl_mw9XUhpiz_DmhqQfW-xfWpzVLULwa88?width=1024&height=576&cropmode=none
 excerpt: 原始导航实在是太难用了！
 ---
 

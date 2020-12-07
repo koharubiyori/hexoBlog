@@ -2,7 +2,7 @@
 title: 在React中愉快地使用TypeScript
 date: 2020-12-04 13:45:39
 tags: [React, TypeScript]
-image: /2020/12/04/React/在React中愉快地使用TypeScript/head.jpg
+image: https://bn1302files.storage.live.com/y4mOZ7DeQeJgfq9g2i4YLZoHw2e_M0HpUlNdFMgLuPqBYJdt6smcIqIXF6xKstXJzyH7BMJ9Zr8oqsW_3MQJ-TvKL0Qe6R5e3zdz8VghLWbuNpqWb7c_SCpHZW4dgyIrcm6Yqxo940O7xXtrkTsxfF-MEEdKJOLWnbHSkDku6HjUdUc5qE8W93uyDG3ZafR72UT?width=1024&height=664&cropmode=none
 imagePosition: center 21%
 excerpt: 今日はチノちゃんの誕生日だ！
 ---

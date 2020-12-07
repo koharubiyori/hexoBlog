@@ -2,7 +2,7 @@
 title: ServiceWorker的基本使用
 date: 2020-10-10 13:37:12
 tags: [JavaScript, 前端]
-image: /2020/10/10/JavaScript/ServiceWorker的基本使用/head.jpg
+image: https://bn1302files.storage.live.com/y4mZYMsZpS5-VbxrkCiQY8drcrsuxZ3Jt_uYrSc537nNl7DOyKhw-l3ywhtZK1OdmLVzkp9DbtfXT0_9UhsH2IJpQY_JWeJQ3kheUEpAE__qQkwpcktv-AuvrW7ZbYlu0I2eKZyJJemHClK5bra14vbBCVAVCvbTlVuMmOKTE695poEFoK71ddRtHPqqL39S-fD?width=1024&height=484&cropmode=none
 excerpt: 研究如何在萌百预览MMD组件的问题时用了一下这个。
 ---
 

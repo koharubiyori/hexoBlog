@@ -2,7 +2,7 @@
 title: React class组件中复用状态及生命周期
 date: 2020-12-04 10:36:27
 tags: React
-image: /2020/12/04/React/React class组件中复用状态及生命周期/head.jpg
+image: https://bn1302files.storage.live.com/y4meAs82SLn1J0nYxN49RYg487VNNRI6IfTj6yQYbgFXjQy0l0epUKismPOGEowPPfc5UtrlHcDsxq5bfDQDBm5OM_O2RmjuK0efTsmfEtxGMAzAJ0UJHDXm6uUg-rGK8c1auhHND4MUgJjvm9QjSDvlgAfXd-yASat-xT6_DdI4vQJjc9bJdFK9oD9rfqpw81U?width=1024&height=724&cropmode=none
 excerpt: 原来Class组件也是可以复用生命周期中的逻辑的。
 ---
 

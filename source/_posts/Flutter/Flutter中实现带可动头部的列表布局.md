@@ -2,17 +2,17 @@
 title: Flutter中实现带可动头部的列表布局
 date: 2020-12-07 10:05:04
 tags: Flutter
-image: /2020/12/07/Flutter/Flutter中实现带可动头部的列表布局/head.jpg
+image: https://bn1302files.storage.live.com/y4m0d3ptUNFMBcZAPLrdYlwLatPLaQ2U8dvmZjJCTYNflldgMA_8IVlEYDKemG0fdZct_QbiIsMLxW3rLF8XgU56s_KCcFAFE6OikQKkrH3RHhCUjg4UAQ2FrZz__YORl_h0_HQpJ0_aHuP13CrhSdNTdJ0yVkVKigSCuBvTl7pMZszK4QG4OhB4ScupmoC_SCc?width=1024&height=576&cropmode=none
 excerpt: 主要是解决下拉刷新指示器被绝对定位的头栏挡住的问题。
 ---
 
-图片来源：[pixiv:title 作者：author](source url)
+图片来源：《请问您今天要来点兔子吗》第二季第11话ED后插图
 
 ## 开始
 
 带可动头部的列表布局指的就是这种效果：
 
-[img]
+<img src="sample.gif" width="300" />
 
 作为一个前端，第一反应就是头栏使用绝对定位，列表顶部添加头部高度的padding，然后通过监听滚动条事件跳转头栏位置，撸代码三下五除二一气呵成；嗯，效果不错。哦，还需要个下拉刷新的功能，这还不简单，`RefreshIndicator`赶快给安排上；ok搞定，来来来看看效果，我擦转圈哪去了？下拉刷新还是好使的——**原来转圈是被头栏挡上了**。
 

@@ -2,19 +2,20 @@
 title: Flutter手动实现Toast
 date: 2020-12-07 10:38:55
 tags: Flutter
-image: /2020/12/07/Flutter/Flutter手动实现Toast/head.jpg
+image: https://bn1302files.storage.live.com/y4mUvexiMcauCQ1ypMxIv07DhsKcw3yRdFaq2nqWgxrTOJFXOIzMM7c5OhdgYarCqBrlgYA9JCXdEdtGrxRnXyG-0u4FLB4dfSt3BPj_TFgiRAfOp5n5jqz-as0rF8Gj2LJz2zqEVIzE9J1D5O5Hfn8tMU8-HdzpoOGT8qgYz2T2CV_96toV_aiEX_McQsTVg8j?width=1024&height=576&cropmode=none
+imagePosition: top
 excerpt: 网上的教程基本都是用fluttertoast，官方文档怎么自定义toast也没说清楚。自己动手，丰衣足食！
 ---
 
-图片来源：[pixiv:title 作者：author](source url)
+图片来源：[pixiv:おかえり 作者：刃天](https://www.pixiv.net/artworks/46407864)
 
 ## 前言
 
-网上的教程基本都是用(fluttertoast)[https://pub.flutter-io.cn/packages/fluttertoast]，官方文档怎么自定义toast也没说清楚(也可能是我英文太烂没看懂)。没办法，自己动手，丰衣足食！
+网上的教程基本都是用[fluttertoast](https://pub.flutter-io.cn/packages/fluttertoast)，官方文档怎么自定义toast也没说清楚(也可能是我英文太烂没看懂)。没办法，自己动手，丰衣足食！
 
 最终效果：
 
-[img]
+<img src="sample.gif" width="300" />
 
 ## 开始
 
