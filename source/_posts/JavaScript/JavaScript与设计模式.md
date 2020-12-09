@@ -21,9 +21,9 @@ excerpt: 算是《JavaScript设计模式》与开发实践的读书总结吧。
 将设计模式这一概念真正发扬并广泛使用的推动者是Erich Gamma、Richard
  Helm、Ralph Johnson以及John Vlissides共同编写的《设计模式：可复用面向对象软件的基础》，这本书中一共收录了Java语言中常用的23种设计模式。
 
-### 23种设计模式 vs 16种设计模式
+### 23种设计模式 vs 14种设计模式
 
-《设计模式》中有23种设计模式，而《JavaScript设计模式与开发实践》中只有16种设计模式，原因有一点在于，设计模式是为了解决语言本身的缺陷，《设计模式》中存在一些专为解决Java语言中的问题而提出的设计模式，有些特性在一些语言中是已经存在的，所以只列出的16种。同时，设计模式也不是一成不变的，将来也会出现更多更好的设计模式，而不适合的设计模式也将被淘汰。
+《设计模式》中有23种设计模式，而《JavaScript设计模式与开发实践》中只有14种设计模式，原因有一点在于，设计模式是为了解决语言本身的缺陷，《设计模式》中存在一些专为解决Java语言中的问题而提出的设计模式，有些特性在一些语言中是已经存在的，所以只列出的14种。同时，设计模式也不是一成不变的，将来也会出现更多更好的设计模式，而不适合的设计模式也将被淘汰。
 
 ## 设计模式六大原则
 
@@ -294,6 +294,56 @@ Abc = (function(Abc) {    // 通过一个闭包，保证访问到的是被代理
     }
   }
 })(Abc)
+```
+
+## 装饰者模式
+
+装饰者模式指在不影响原函数的情况下动态地为一个函数添加行为，从而使功能间解耦。
+例如可以修改一个函数接收到的参数，为函数添加一些其他功能，甚至直接返回一个新函数。
+
+装饰者模式和代理模式的异同：
+- 都要求保持接口一致
+- 代理模式倾向于控制被代理对象的访问，装饰者模式倾向于为被装饰函数添加行为
+- 代理在声明时就被定下来的，装饰者是可以动态添加的。
+
+``` js
+// 使用装饰者模式实现统计一个按钮的点击次数
+let pressButton = function() {
+  console.log('点击了按钮')
+}
+
+class PressCounter {
+  constructor() {
+    this.total = 0
+  }
+
+  increment() {
+    this.total++
+    console.log('计数+1')
+  }
+
+  get() {
+    return this.total
+  }
+}
+
+function after(fn, afterFn) {
+  return (...args) => {
+    fn(args)
+    afterFn(args)
+  }
+}
+
+let pressCounter = new PressCounter()
+
+pressButton = after(
+  pressButton, 
+  () => pressCounter.increment()
+)
+
+pressButton()
+pressButton()
+pressButton()
 ```
 
 ## 迭代器模式
