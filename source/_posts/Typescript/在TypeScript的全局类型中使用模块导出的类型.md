@@ -1,7 +1,7 @@
 ---
 title: 在TypeScript的全局类型中使用模块导出的类型
 date: 2020-08-24 13:04:52
-tags: [Typescript]
+tags: [TypeScript]
 image: https://bn1302files.storage.live.com/y4m7Stf2DFHbz7UTWZ86rSMDle3qF8j3cVRcDlOXahMpXcnJPoapGVfGTA6TDctvrVHd3g2abx-MSqWj_m5M6VgVhx2--q1ezN9u8QBqCTveqR9TIbE7hM7YW72iYJlNQ84TMRTxbUEU_ZuOsOU99WjWZbPqqjCAMeBAh0JS6n5bGWRmth5cGqPl7pCSgIAhh3o?width=1024&height=553&cropmode=none
 excerpt: 偶然中在看jQuery的.d.ts文件时发现了答案。
 ---

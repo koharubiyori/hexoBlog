@@ -62,6 +62,7 @@ export default {
 
   }
 }
+</script>
 ```
 
 再来实现关键的`TabContainer`组件，这个组件包含生成实际内容的逻辑。

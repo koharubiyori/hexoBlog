@@ -84,11 +84,6 @@ $(() => {
     placeholder: '说点什么吧...'
   })
 
-  // 如果刚进入页面时有锚点，滚动条需要后退56px，让出头栏的距离
-  setTimeout(() => {
-    location.hash && window.scrollTo(0, window.scrollY - 60)
-  }, 1000)
-
   // 为文章中的图片添加预览器
   ;(() => {
     const postPageContainerEl = document.querySelector('.page-post')
@@ -243,9 +238,7 @@ function initContents() {
       const contentsItem = $(`<a class="articleContents-item com-textLimit" data-level="${item.level}" href="${'#' + item.id}">- ${item.number} ${item.name}</a>`)
         .click(e => {
           e.preventDefault()
-          document.getElementById(item.id).scrollIntoView()
-          window.scrollTo(0, window.scrollY - 56)
-          window.history.replaceState({}, '', location.href.replace(/#[^\/]+$/, '') + '#' + item.id)
+          location.hash = item.id
         })
       $('.articleContents').append(contentsItem)
     })
@@ -256,19 +249,21 @@ function initContents() {
     $(window).on('scroll', checkContents)
 
     function checkContents() {
+      const minusOffset = 50
+      
       articleContentsItems.removeClass('is-active')
-      if (window.scrollY < contentsData[0].offset) {
+      if (window.scrollY < contentsData[0].offset - minusOffset) {
         articleContentsItems.eq(0).addClass('is-active')
         return
       }
 
-      if (window.scrollY > contentsData[contentsData.length - 1].offset) {
+      if (window.scrollY > contentsData[contentsData.length - 1].offset - minusOffset) {
         articleContentsItems.eq(articleContentsItems.length - 1).addClass('is-active')
         return
       }
 
       contentsData.forEach((item, index) => {
-        if (window.scrollY > item.offset && window.scrollY < contentsData[index + 1].offset) {
+        if (window.scrollY > item.offset - minusOffset && window.scrollY < contentsData[index + 1].offset - minusOffset) {
           articleContentsItems.eq(index).addClass('is-active')
           return
         }
