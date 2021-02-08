@@ -27,6 +27,17 @@ export interface Person {
 
 假设要使用`Person`这个类型，这里就需要引入`myModule.ts`这个文件，问题是在哪里引入，如果在`globals.d.ts`引入，必然导致其中的全局声明全部失效。
 
+``` ts
+// globals.d.ts
+import { Person } from 'myModule'   // 引入了一个模块，导致下面的类都无法全局使用
+
+declare type ErrCode = 1 | 2 | 3
+
+declare interface Scroll {
+  studentList: Person[]
+}
+```
+
 __需要在一个全局命名空间声明文件中引入，并将其放在全局命名空间上。__
 
 ``` ts
@@ -45,7 +56,7 @@ declare namespace MyGlobal {
 }
 ```
 
-上面的声明在全局命名空间上添加了一个`MyGlobal`命名空间，现在我们就可以在任意文件中使用`MyGlobal.Staff`和`MyGlobal.Company`类型了，唯一变化最大的一点就是多了层命名空间。
+上面的声明在全局命名空间上添加了一个`MyGlobal`命名空间，现在我们就可以在任意文件中使用`MyGlobalCustom.Staff`和`MyGlobalCustom.Company`类型了，唯一变化最大的一点就是多了层命名空间。
 
 这种用法的服务对象本身是给像jQuery这种js全局命名空间的库使用的(虽然jQuery现在也支持模块化使用了，这里只是举个大家都熟悉的例子)，但也不妨碍我们使用它来进行全局类型的声明。
 
