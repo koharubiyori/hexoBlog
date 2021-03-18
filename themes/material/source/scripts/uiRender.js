@@ -211,46 +211,56 @@ function createDrawer() {
 
 function initContents() {
   if ($('.page-post').length !== 0) {
-    const contentsData = []
-    const number = [0, 0]
+
+    let contentsData = []
+    let number = [0, 0]
     let lastLevel = 2
 
-    $('.post-body--content > .contentContainer > h2, .post-body--content > .contentContainer > h3').each((index, item) => {
-      // 收集目录标题
-      const level = parseInt(item.tagName.replace('H', ''))
-      if (level === 2) {
-        number[0]++
-        number[1] = 0
-      }
-      if (level === 3) number[1]++
-      lastLevel = level
+    new ResizeObserver(collectContentsData).observe($('html')[0])
 
-      contentsData.push({ 
-        id: item.id,
-        name: $(item).text(),
-        level: parseInt(item.tagName.replace('H', '')),
-        number: number.join('.').replace('.0', ''),
-        offset: item.getBoundingClientRect().top  // 记录每个标题的顶部偏移
-      })
-    })
+    function collectContentsData() {
+      $('.articleContents > .articleContents-item').remove()
+      contentsData = []
+      number = [0, 0]
+      lastLevel = 2
 
-    contentsData.forEach(item => {
-      const contentsItem = $(`<a class="articleContents-item com-textLimit" data-level="${item.level}" href="${'#' + item.id}">- ${item.number} ${item.name}</a>`)
-        .click(e => {
-          e.preventDefault()
-          location.hash = item.id
+      $('.post-body--content > .contentContainer > h2, .post-body--content > .contentContainer > h3').each((index, item) => {
+        // 收集目录标题
+        const level = parseInt(item.tagName.replace('H', ''))
+        if (level === 2) {
+          number[0]++
+          number[1] = 0
+        }
+        if (level === 3) number[1]++
+        lastLevel = level
+  
+        contentsData.push({ 
+          id: item.id,
+          name: $(item).text(),
+          level: parseInt(item.tagName.replace('H', '')),
+          number: number.join('.').replace('.0', ''),
+          offset: item.getBoundingClientRect().top + window.scrollY  // 记录每个标题的顶部偏移
         })
-      $('.articleContents').append(contentsItem)
-    })
+      })
+  
+      contentsData.forEach(item => {
+        const contentsItem = $(`<a class="articleContents-item com-textLimit" data-level="${item.level}" href="${'#' + item.id}">- ${item.number} ${item.name}</a>`)
+          .click(e => {
+            e.preventDefault()
+            location.hash = item.id
+          })
+        $('.articleContents').append(contentsItem)
+      })
+    }
 
-    const articleContentsItems = $('.articleContents > .articleContents-item')
-
-    checkContents()
     $(window).on('scroll', checkContents)
-
+    
     function checkContents() {
+      if (contentsData.length === 0) { return }
       const minusOffset = 50
       
+      const articleContentsItems = $('.articleContents > .articleContents-item')
+
       articleContentsItems.removeClass('is-active')
       if (window.scrollY < contentsData[0].offset - minusOffset) {
         articleContentsItems.eq(0).addClass('is-active')
