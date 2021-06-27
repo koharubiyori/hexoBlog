@@ -216,9 +216,18 @@ function initContents() {
     let number = [0, 0]
     let lastLevel = 2
 
-    new ResizeObserver(collectContentsData).observe($('html')[0])
+    const debounced = (fn, time = 0) => {
+      let timeoutKey = 0
+      return () => {
+        clearTimeout(timeoutKey)
+        setTimeoutKey = setTimeout(fn, time)
+      }
+    }
+
+    new ResizeObserver(debounced(collectContentsData, 10)).observe($('html')[0])
 
     function collectContentsData() {
+      console.log('exec')
       $('.articleContents > .articleContents-item').remove()
       contentsData = []
       number = [0, 0]

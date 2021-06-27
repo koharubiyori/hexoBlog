@@ -135,6 +135,14 @@
           color: var(--mdc-theme-primary);
           text-decoration: underline;
         }
+
+        ul, ol {
+          padding-left: 30px;
+
+          > li {
+            line-height: 1.3;
+          }
+        }
   
         h2, h3 {
           &::before {
