@@ -305,6 +305,7 @@ function initSearchModal() {
   $('#searchButton').click(() => {
     $('.page-search').fadeIn(300)
     $('.search-body').animate({ top: 40, opacity: 1 }, 300)
+    $('body').css('overflow', 'hidden')
     loadSearchData()
   })
   
@@ -315,6 +316,7 @@ function initSearchModal() {
     setTimeout(() => {
       $('.search-result').empty()
       $('.search-input').val('')
+      $('body').css('overflow', '')
     }, 300)
   })
 
