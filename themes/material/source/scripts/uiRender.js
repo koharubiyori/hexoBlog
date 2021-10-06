@@ -253,7 +253,7 @@ function initContents() {
       })
   
       contentsData.forEach(item => {
-        const contentsItem = $(`<a class="articleContents-item com-textLimit" data-level="${item.level}" href="${'#' + item.id}">- ${item.number} ${item.name}</a>`)
+        const contentsItem = $(`<a class="articleContents-item com-textLimit" data-level="${item.level}" href="${'#' + item.id}">${item.number} ${item.name}</a>`)
           .click(e => {
             e.preventDefault()
             location.hash = item.id

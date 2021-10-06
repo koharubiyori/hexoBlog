@@ -45,8 +45,8 @@
         &.is-active {
           color: black;
           font-weight: bold;
-          // border-bottom: 3px var(--mdc-theme-primary) solid;
-          // padding-bottom: 3px;
+          border-left: 3px var(--mdc-theme-primary) solid;
+          padding-left: 3px;
         }
       }
     }

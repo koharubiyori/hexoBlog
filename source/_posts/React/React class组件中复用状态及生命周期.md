@@ -101,11 +101,11 @@ function HOC(Component) {
 }
 ```
 
-### 使用es散列表实现私有属性
+### 使用散列表实现私有属性
 
 ``` ts
 function HOC(Component) {
-  // 使用类实例作为键，保存每个对象的私有属性
+  // 使用类实例作为键，保存每个组件实例的私有属性
   // 不要使用Map，理由见：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/WeakMap#Why_WeakMap
   const privateSpace = WeakMap()
 

@@ -359,7 +359,7 @@ pressButton()
 在需要多层迭代循环时，外部迭代器能使逻辑变得清晰，避免多层回调。
 外部迭代器也可以实现惰性计算，每次调用next时计算，而不是一次性全部计算完毕。
 
-一个符合规范js的迭代器必须实现(迭代器协议)[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols#iterator]。
+一个符合规范js的迭代器必须实现[迭代器协议](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols#iterator)。
 
 ``` js
 // 实现一个类似$.each的内部迭代器

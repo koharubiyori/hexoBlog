@@ -22,7 +22,7 @@ type MyComponent = React.Component<Props, State, SnapShot>
 
 * `Props`：组件参数，最常用的就是这个
 * `State`：组件状态，在一些高阶组件向state注入成员时会用到
-* `SnapShot`：快照类型，也就是当使用有返回值的`getSnapshotBeforeUpdate`时`componentDidUpdate`接到的第三个参数的类型(参见：[https://zh-hans.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate])
+* `SnapShot`：快照类型，也就是当使用有返回值的`getSnapshotBeforeUpdate`时`componentDidUpdate`接到的第三个参数的类型(参见：https://zh-hans.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate)
 
 **栗子：**
 
