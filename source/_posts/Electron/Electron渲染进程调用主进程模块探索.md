@@ -2,11 +2,12 @@
 title: Electron渲染进程调用主进程模块探索
 date: 2021-10-11 11:04:35
 tags: Electron
-image: /2021/10/11/Electron/Electron渲染进程调用主进程模块探索/head.jpg
-excerpt: 优雅地暴露主线程接口。
+image: https://snz04pap001files.storage.live.com/y4m0Eqep3xRTPd87LL6ELGFFV0pu2pw8K8aH0i4ISC1Sg072Z8_r3mMoNDZgDva-V5uykoihZCcqM3vuRd_kBd-IBYCTbDaiERkve8obmwtAo_rKm8600Jtu9sj9tSAlMAeW7yWoEco5LaIKsz1pz5I-5GmegPDPQHX9TVptaRlrDKxDk_bHK8O1rwIID4qUgti?width=660&height=371&cropmode=none
+imageStyle: object-fit:contain; background-color:#FFFBF5;
+excerpt: 小千超级可爱！
 ---
 
-图片来源：[pixiv:title 作者：author](source url)
+图片来源：[pixiv:title 作者：ひなた](https://www.pixiv.net/artworks/88043752)
 
 ## 前言
 

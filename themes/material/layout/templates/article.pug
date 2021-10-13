@@ -2,7 +2,7 @@
   article: typeof page.posts.data[number]
 
 a.tl-articleItem.mdc-elevation--z2(href=`/${article.path}`)
-  img.articleItem-bgImage(src=article.image style=`object-position:${article.imagePosition}`)
+  img.articleItem-bgImage(src=article.image style=`object-position:${article.imagePosition}; ${article.imageStyle || ''}`)
   .articleItem-title #{article.title}
   .articleItem-info
     .articleItem-info--excerpt #{article.excerpt}

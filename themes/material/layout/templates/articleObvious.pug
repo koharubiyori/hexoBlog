@@ -3,7 +3,7 @@
 
 a.tl-articleObviousItem.mdc-elevation--z2(href=`/${article.path}`)
   .articleObviousItem-image-wrapper
-    img.articleObviousItem-image(src=article.image style=`object-position:${article.imagePosition}`)
+    img.articleObviousItem-image(src=article.image style=`object-position:${article.imagePosition}; ${article.imageStyle || ''}`)
   .articleObviousItem-main
     .articleObviousItem-main--title #{article.title}
     hr
