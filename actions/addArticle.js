@@ -16,7 +16,7 @@ title: ${title}
 date: ${moment().format('YYYY-MM-DD HH:mm:ss')}
 tags: ${folder}
 image: /${moment().format('YYYY/MM/DD')}/${folder}/${title}/head.jpg
-excerpt: 
+excerpt: 简介
 ---
 
 图片来源：[pixiv:title 作者：author](source url)
