@@ -7,7 +7,7 @@ imageStyle: object-fit:contain; background-color:#FFFBF5;
 excerpt: 小千超级可爱！
 ---
 
-图片来源：[pixiv:title 作者：ひなた](https://www.pixiv.net/artworks/88043752)
+图片来源：[pixiv:嵐千砂都ちゃん 作者：ひなた](https://www.pixiv.net/artworks/88043752)
 
 ## 前言
 
@@ -15,11 +15,11 @@ excerpt: 小千超级可爱！
 
 ## 开始
 
-一般来说暴露接口主要有两种方式，一是通过预加载脚本向目标window注入函数。由于这种方法不能直接使用ts文件作为预加载脚本，放弃。二就是通过`ipcMain`与`ipcRenderer`模块进行通信。但是，这种方式带来问题就是必须在主进程与渲染进程之间两头注册与触发事件，同时维护事件处理与触发的逻辑实在是不够优雅，这里就需要一套既能在主进程，又能在渲染进程运行的代码。
-
-为了对暴露的接口进行分类，我这里将`ipcMain`的每个channel作为一个分类，其下有多个方法。
+一般来说暴露接口主要有两种方式，一是通过预加载脚本向目标window注入函数。由于这种方法不能直接使用ts文件作为预加载脚本，放弃。二就是通过`ipcMain`与`ipcRenderer`模块进行通信。但是，这种方式必须在主进程与渲染进程之间两头注册与触发事件，同时维护事件处理与触发的逻辑实在是不够优雅。所以说这里就需要一套既能在主进程，又能在渲染进程运行的代码。
 
 ## 目录结构
+
+为了对暴露的接口进行分类，我这里将`ipcMain`的每个channel作为一个分类，其下有多个方法。
 
 ```
 ipcHub
@@ -40,13 +40,13 @@ ipcHub
 import { dialog, OpenDialogOptions } from 'electron'
 import createIpcChannel from '../createIpcChannel'
 
-// 这里就暴露了一个显示选择文件夹窗口的接口
+// 这里暴露了一个显示选择文件夹窗口的接口
 // 其中，主进程使用dialogIpc，渲染进程使用dialogIpcClient
 export const dialogIpc = createIpcChannel('dialog', {
-  // 定义一个channel下的方法，参数从渲染进程传来
+  // 定义channel下的方法，参数从渲染进程传来
   showDirSelectDialog(options: OpenDialogOptions) {
-    // 一些操作，这些代码是要在主进程中执行的。
-    // 返回异步的结果，返回给渲染进程
+    // 一些操作，这里的代码会在主线程中执行
+    // 将异步的结果返回给渲染进程
     // 这里的this见下面createIpcChannel的说明
     return dialog.showOpenDialog(this, options)
   }
@@ -61,37 +61,39 @@ export const dialogIpcClient = dialogIpc.getChannelClient()
 // createIpcChannel.ts
 import { BrowserWindow, ipcMain, ipcRenderer } from 'electron'
 
-// 定义泛型，用来在时间暴露的接口的同时定义调用的接口
-// 关于this，由于我自己做的是单页应用，并且没有打开新窗口的操作，
+// 定义泛型，用来在实现暴露的接口的同时定义调用的接口
+type ChannelActions = { [actionName: string]: (this: BrowserWindow, ...args: any[]) => any }
+
+// 关于上面this的类型定义，由于我自己做的是单页应用，并且没有打开新窗口的操作，
 // 也就是说我只维护一个唯一的渲染进程，为了方便所以就在这里将this赋值了window实例，
 // 你可以把this当作是一个初始化channel时存放主进程传进来的额外数据的地方，根据自己的需要放其他东西
-export default function createIpcChannel<T extends { [actionName: string]: 
-  (this: BrowserWindow, ...args: any[]) => any }>(channelName: string, actions: T) {
-    // 初始化ipc channel，实际上就是绑定对应频道的事件，这个方法要给主进程调用
-    function initIpcChannel(mainWindow: BrowserWindow) {
-      ipcMain.handle(channelName, (e, actionName, ...args) => {
-        // 利用传入的一个actionName区分同一channel下不同方法
-        const targetAction = actions[actionName]
-        return targetAction.call(mainWindow, ...args)
-      })
+
+export default function createIpcChannel<T extends ChannelActions>(channelName: string, actions: T) {
+  // 初始化ipc channel，实际上就是绑定对应频道的事件，这个方法要给主进程调用
+  function initIpcChannel(mainWindow: BrowserWindow) {
+    ipcMain.handle(channelName, (e, actionName, ...args) => {
+      // 利用传入的actionName区分同一channel下不同方法
+      const targetAction = actions[actionName]
+      return targetAction.call(mainWindow, ...args)
+    })
+  }
+
+  // 获取client
+  function getChannelClient() {
+    // 根据方法名(actionName)映射对应的方法类型
+    type ChannelClient = {
+      [ActionName in keyof T]: (...args: Parameters<T[ActionName]>) => Promise<ReturnType<T[ActionName]>>
     }
 
-    // 获取client
-    function getChannelClient() {
-      // 根据方法名(actionName)映射对应的方法类型
-      type ChannelClient = {
-        [ActionName in keyof T]: (...args: Parameters<T[ActionName]>) => Promise<ReturnType<T[ActionName]>>
+    // 用一个proxy将访问转发给对应的方法
+    return new Proxy({} as ChannelClient, {
+      get(target, getter) {
+        return (...args: any[]) => ipcRenderer.invoke(channelName, getter, ...args)
       }
+    })
+  }
 
-      // 用一个proxy将访问转发给对应的方法
-      return new Proxy({} as ChannelClient, {
-        get(target, getter) {
-          return (...args: any[]) => ipcRenderer.invoke(channelName, getter, ...args)
-        }
-      })
-    }
-
-    return { initIpcChannel, getChannelClient }
+  return { initIpcChannel, getChannelClient }
 }
 ```
 

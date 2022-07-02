@@ -124,7 +124,7 @@
     &--content {
       padding: 15px 20px 20px 20px;
       box-sizing: border-box;
-      font-size: 14px;
+      font-size: 15px;
 
       .contentContainer {
         & > p:first-child {
@@ -188,12 +188,14 @@
   
         blockquote {
           padding: 10px;
+          padding-left: 25px;
           border-width: 7px;
-          background-color: white;
+          background-color: rgba($color: #F4F4FF, $alpha: 0.8);
           border-left-width: 7px;
           border-left-style: solid;
           border-left-color: var(--mdc-theme-primary);
           margin: 15px 0;
+          color: #666;
   
           > p {
             margin: 0;

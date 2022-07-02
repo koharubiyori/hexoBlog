@@ -7,7 +7,9 @@
  */
 function alertTag([type = 'info', text], content) {
   const alertContent = text || content
-  return `<div class="alertTag" data-type="${type}">${alertContent}</div>`
+  return `<blockquote class="alertTag" data-type="${type}">
+    <p>${alertContent}</p>
+  </blockquote>`
 }
 
 hexo.extend.tag.register('alert', alertTag, { ends: true })

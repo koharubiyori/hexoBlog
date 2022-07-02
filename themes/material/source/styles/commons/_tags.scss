@@ -1,16 +1,9 @@
 
 .alertTag {
-  padding: 10px;
-  border-width: 7px;
-  background-color: white;
-  border-left-width: 7px;
-  border-left-style: solid;
-  margin: 15px 0;
-
   &[data-type="info"] {
-    border-left-color: #409eff;
-    color: #409eff;
-    background-color: rgba($color: #ecf5ff, $alpha: 0.8);  
+    border-left-color: #409eff !important;
+    color: #409eff !important;
+    background-color: #ecf5ff !important;  
   }
 
   &[data-type="warning"] {
